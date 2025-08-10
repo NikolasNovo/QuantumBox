@@ -9,7 +9,7 @@ First game: **Milky Way Star** — a small, soothing pixel-art game set among th
 
 ## 🌐 Live site
 Once deployed to GitHub Pages, you can visit:  
-`https://nikolasnovo.github.io/QuantumBox/#game`
+`https://nikolasnovo.github.io/QuantumBox`
 
 ## 📂 Contents
 - `index.html` — Single-page site with embedded images.
@@ -20,5 +20,6 @@ Once deployed to GitHub Pages, you can visit:
 All rights reserved.  
 You may view and share the website link for personal, non-commercial purposes with credit.  
 No commercial use, redistribution, or modification without permission.
+
 
 
