@@ -1,215 +1,206 @@
-export default function QuantumBoxSite() {
-  return (
-    <div className="min-h-screen text-white scroll-smooth">
-      {/* Global background */}
-      <div
-        className="fixed inset-0 -z-10"
-        style={{
-          background:
-            "radial-gradient(1200px 800px at 80% 20%, rgba(180,77,255,0.15), transparent 60%), radial-gradient(900px 700px at 20% 70%, rgba(77,208,255,0.12), transparent 60%), linear-gradient(180deg, #0a0317 0%, #120824 50%, #0b0420 100%)",
-        }}
-      />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QuantumBox — Cozy Indie Games & Apps</title>
+  <meta name="description" content="QuantumBox — Beginner indie developer crafting cozy games and apps with heart. First release: Milky Way Star. Less noise, more soul." />
+  <meta property="og:title" content="QuantumBox — Cozy Indie Games & Apps" />
+  <meta property="og:description" content="Beginner indie developer creating warm, heartfelt games & apps. Discover Milky Way Star and future cozy adventures." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://<your-username>.github.io/<repo-name>/" />
+  <meta name="theme-color" content="#0a0317" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg1: #0a0317;
+      --bg2: #120824;
+      --bg3: #0b0420;
+      --cyan: #79e0ff;
+      --fuchsia: #d59bff;
+      --rose: #ff86d1;
+      --amber: #ffb400;
+      --text: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 800px at 80% 20%, rgba(180,77,255,0.15), transparent 60%),
+        radial-gradient(900px 700px at 20% 70%, rgba(77,208,255,0.12), transparent 60%),
+        linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 50%, var(--bg3) 100%);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    .stars {
+      position: fixed; inset: 0; pointer-events: none; opacity: .4; z-index: -1;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,.8) 40%, transparent 41%),
+        radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,.7) 40%, transparent 41%),
+        radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,.8) 40%, transparent 41%),
+        radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,.7) 40%, transparent 41%);
+      background-size: 300px 300px, 400px 400px, 350px 350px, 450px 450px;
+    }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 1.25rem; }
+    header.nav {
+      position: sticky; top: 0; backdrop-filter: blur(8px);
+      background: rgba(13,8,32,.6); border-bottom: 1px solid rgba(255,255,255,.1); z-index: 20;
+    }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; padding: .9rem 0; }
+    .brand { display:flex; align-items:center; gap:.5rem; font-weight:600; letter-spacing:.02em; text-decoration:none; color:var(--text);}
+    .navlinks a { color:#e9e9ee; text-decoration:none; margin-left:1rem; font-size:.95rem; }
+    .navlinks a:hover { color: var(--cyan); }
+    section { padding: 5rem 0; }
+    h1 { font-size: clamp(2.2rem, 4vw + 1rem, 3.5rem); margin: 0; line-height: 1.1; }
+    h2 { font-size: clamp(1.6rem, 2vw + .8rem, 2.2rem); margin: 0 0 .5rem; }
+    p.lead { color: rgba(255,255,255,.85); font-size: 1.1rem; margin-top: 1rem; }
+    .grid { display:grid; gap: 2rem; }
+    @media (min-width: 900px) { .grid-2 { grid-template-columns: 1.2fr 1fr; } }
+    .btn { display:inline-block; padding:.9rem 1.2rem; border-radius: 14px; font-weight:600; text-decoration:none; transition:.2s; border:1px solid rgba(255,255,255,.25); color:white; }
+    .btn:hover { border-color: rgba(255,255,255,.5); }
+    .btn-primary { background: rgba(255,180,0,.92); color: #0a0615; border: none; }
+    .btn-primary:hover { background: rgba(255,200,60,1); }
+    .badge { display:inline-flex; align-items:center; gap:.5rem; letter-spacing:.2em; text-transform:uppercase; font-size:.7rem; color: rgba(193,244,255,.95); }
+    .dot { width:6px; height:6px; border-radius:999px; background: var(--cyan); display:inline-block; }
+    .frame { border-radius: 18px; overflow:hidden; border:1px solid rgba(255,255,255,.15); box-shadow: 0 20px 40px rgba(0,0,0,.35); background:#0d1a3a; }
+    figure { margin:0; }
+    figcaption { text-align:center; padding:.7rem 1rem; color: rgba(255,255,255,.7); font-size:.9rem; }
+    .card { border-radius:18px; border:1px solid rgba(255,255,255,.15); padding:1rem; background: rgba(255,255,255,.06); }
+    footer { border-top:1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.8); }
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan), var(--fuchsia), var(--rose));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .logo {
+      width:26px; height:26px; display:inline-block; position: relative;
+    }
+    .logo:before, .logo:after { content:""; position:absolute; inset:0; border-radius:50%; border:2px solid var(--cyan); transform: rotate(35deg); }
+    .logo:after { border-color: var(--fuchsia); transform: rotate(-35deg); }
+    .logo-dot { position:absolute; inset:7px; border-radius:50%; background: var(--amber); }
+    .pill-list li { margin:.4rem 0; color: rgba(255,255,255,.75); }
+    .hero-img { width:100%; height:auto; display:block; filter: drop-shadow(0 12px 40px rgba(121,224,255,.3)); border-radius: 18px; }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
 
-      {/* Star dust overlay */}
-      <div
-        className="fixed inset-0 -z-10 opacity-40"
-        style={{
-          backgroundImage:
-            "radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.7) 40%, transparent 41%), radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.6) 40%, transparent 41%), radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.7) 40%, transparent 41%), radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.6) 40%, transparent 41%)",
-          backgroundSize: "300px 300px, 400px 400px, 350px 350px, 450px 450px",
-        }}
-      />
-
-      {/* Nav */}
-      <nav className="sticky top-0 z-20 backdrop-blur supports-[backdrop-filter]:bg-[#0d0820]/60 border-b border-white/10">
-        <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-          <a href="#home" className="flex items-center gap-2 group">
-            <Logo className="h-7 w-7" />
-            <span className="font-semibold tracking-wide">QuantumBox</span>
-          </a>
-          <div className="flex items-center gap-4 text-sm">
-            <a className="hover:text-cyan-300" href="#home">Home</a>
-            <a className="hover:text-fuchsia-300" href="#game">Milky Way Star</a>
-            <a className="hover:text-amber-300" href="#about">About</a>
-          </div>
-        </div>
+  <!-- Nav -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">
+        <span class="logo"><span class="logo-dot"></span></span>
+        <span>QuantumBox</span>
+      </a>
+      <nav class="navlinks">
+        <a href="#home">Home</a>
+        <a href="#game">Milky Way Star</a>
+        <a href="#about">About</a>
       </nav>
+    </div>
+  </header>
 
-      {/* Hero */}
-      <section id="home" className="mx-auto max-w-6xl px-4 pt-20 pb-24">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-              <span className="block">Welcome to</span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-fuchsia-300 to-rose-300">QuantumBox</span>
-            </h1>
-            <p className="mt-4 text-lg text-white/80">
-              Beginner indie dev turning ideas into cozy apps & games—less noise, more heart, made for real people.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#game" className="px-5 py-3 rounded-2xl font-medium border border-cyan-200/40 hover:border-cyan-200/70 hover:shadow-lg hover:shadow-cyan-300/20 transition">
-                See the first game
-              </a>
-              <a href="#about" className="px-5 py-3 rounded-2xl font-medium border border-fuchsia-200/40 hover:border-fuchsia-200/70 hover:shadow-lg hover:shadow-fuchsia-300/20 transition">
-                About me
-              </a>
-            </div>
-            <ul className="mt-8 space-y-2 text-white/70 text-sm">
-              <li>• Cozy vibes, small scope, polished feel</li>
-              <li>• Built with curiosity, patience, and love for players</li>
-              <li>• Color palette inspired by neon-cosmic hues with warm gold accents</li>
+  <!-- Hero -->
+  <section id="home">
+    <div class="container grid grid-2">
+      <div>
+        <h1>Welcome to <span class="gradient-text">QuantumBox</span></h1>
+        <p class="lead">Beginner indie dev turning ideas into cozy apps &amp; games—less noise, more heart, made for real people.</p>
+        <div style="margin-top:1rem">
+          <a class="btn btn-primary" href="#game">See the first game</a>
+          <a class="btn" href="#about" style="margin-left:.5rem">About me</a>
+        </div>
+        <ul class="pill-list" style="margin-top:1rem">
+          <li>• Cozy vibes, small scope, polished feel</li>
+          <li>• Built with curiosity, patience, and love for players</li>
+          <li>• Neon-cosmic palette with warm gold accents</li>
+        </ul>
+      </div>
+      <div>
+        <img class="hero-img" src="YOUR_HERO_IMAGE_BASE64_OR_URL" alt="QuantumBox atom rising from a treasure chest" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Game -->
+  <section id="game">
+    <div class="container grid grid-2">
+      <div>
+        <div class="badge"><span class="dot"></span>New Release</div>
+        <h2>Milky Way Star</h2>
+        <p class="lead">A bite-size, starry arcade where simple taps guide a little light through the Milky Way. Easy to learn, soothing to play.</p>
+        <ul class="pill-list">
+          <li>• One-thumb controls — perfect for quick sessions</li>
+          <li>• Cozy pixel art & gentle space ambience</li>
+          <li>• Goals, high scores, and a calm, replayable loop</li>
+        </ul>
+        <div style="margin-top:1rem">
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Play on Google Play</a>
+          <a class="btn" href="#" style="margin-left:.5rem">Press kit</a>
+        </div>
+      </div>
+      <div>
+        <figure class="frame">
+          <img src="YOUR_GAME_IMAGE_BASE64_OR_URL" alt="Milky Way Star screenshot" style="width:100%; display:block;" />
+          <figcaption>Milky Way Star — WIP screenshot</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container grid" style="grid-template-columns: 2fr 1fr;">
+      <div>
+        <h2>About Me</h2>
+        <p class="lead">Hi! I’m the solo developer behind <strong>QuantumBox</strong>. I’m just starting my indie journey—learning in public, keeping scope small, and focusing on warm, feel-good experiences.</p>
+        <p class="lead">I believe in cozy vibes, respectful design, and games that brighten a day. If you’d like to follow along or collaborate, drop me a line below.</p>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; margin-top:.5rem">
+          <div class="card">
+            <h3 style="margin:.2rem 0">Focus</h3>
+            <ul class="pill-list">
+              <li>• Cozy arcade & puzzles</li>
+              <li>• Tiny, polished apps</li>
+              <li>• Mobile-first UX</li>
             </ul>
           </div>
-          <div className="relative">
-            <div className="absolute -inset-6 -z-10 blur-3xl opacity-50 bg-gradient-to-tr from-cyan-400/30 via-fuchsia-400/30 to-rose-400/30" />
-            <ChestAtom className="w-full" />
-          </div>
-        </div>
-      </section>
-
-      {/* Game section */}
-      <section id="game" className="mx-auto max-w-6xl px-4 py-20">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-cyan-200/90">
-              <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" /> New Release
-            </div>
-            <h2 className="mt-2 text-3xl md:text-4xl font-bold">Milky Way Star</h2>
-            <p className="mt-3 text-white/80">
-              A bite-size, starry arcade where simple taps guide a little light through the Milky Way. Easy to learn, soothing to play.
-            </p>
-            <ul className="mt-5 space-y-2 text-white/75">
-              <li>• One-thumb controls — perfect for quick sessions</li>
-              <li>• Cozy pixel art & gentle space ambience</li>
-              <li>• Goals, high scores, and a calm, replayable loop</li>
+          <div class="card">
+            <h3 style="margin:.2rem 0">Values</h3>
+            <ul class="pill-list">
+              <li>• Less noise, more heart</li>
+              <li>• Player kindness</li>
+              <li>• Craft over hype</li>
             </ul>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {/* Replace # with your real Google Play URL */}
-              <a href="#" className="px-5 py-3 rounded-2xl font-medium bg-amber-400/90 text-black hover:bg-amber-300 transition">
-                Play on Google Play
-              </a>
-              <a href="#" className="px-5 py-3 rounded-2xl font-medium border border-white/20 hover:border-white/40 transition">
-                Press kit
-              </a>
-            </div>
-          </div>
-          <div>
-            {/* Screenshot frame — replace src with your hosted image URL */}
-            <figure className="rounded-2xl overflow-hidden border border-white/15 shadow-xl">
-              <img
-                src=""
-                alt="Milky Way Star screenshot"
-                className="w-full object-cover bg-[#0d1a3a]"
-                style={{ minHeight: 380 }}
-              />
-              <figcaption className="px-4 py-3 text-center text-white/70 text-sm">
-                Replace the image <code>src</code> with your screenshot URL.
-              </figcaption>
-            </figure>
           </div>
         </div>
-      </section>
-
-      {/* About */}
-      <section id="about" className="mx-auto max-w-6xl px-4 py-20">
-        <div className="grid md:grid-cols-3 gap-10 items-start">
-          <div className="md:col-span-2">
-            <h2 className="text-3xl md:text-4xl font-bold">About Me</h2>
-            <p className="mt-4 text-white/80">
-              Hi! I’m the solo developer behind <span className="font-semibold">QuantumBox</span>. I’m just starting my indie journey—
-              learning in public, keeping scope small, and focusing on warm, feel-good experiences.
-            </p>
-            <p className="mt-4 text-white/80">
-              I believe in cozy vibes, respectful design, and games that brighten a day. If you’d like to follow along or collaborate,
-              drop me a line below.
-            </p>
-            <div className="mt-6 grid sm:grid-cols-2 gap-4">
-              <InfoCard title="Focus" points={["Cozy arcade & puzzles","Tiny, polished apps","Mobile-first UX"]} />
-              <InfoCard title="Values" points={["Less noise, more heart","Player kindness","Craft over hype"]} />
-            </div>
-          </div>
-          <div className="md:col-span-1">
-            <div className="rounded-2xl border border-white/15 p-5 bg-white/5">
-              <h3 className="font-semibold">Contact</h3>
-              <p className="mt-2 text-white/75 text-sm">Add your preferred contact links:</p>
-              <ul className="mt-3 space-y-2 text-sm">
-                <li>• Email: <a className="underline hover:text-cyan-300" href="mailto:you@example.com">you@example.com</a></li>
-                <li>• Twitter/X: <a className="underline hover:text-cyan-300" href="#">@yourhandle</a></li>
-                <li>• Itch.io / Discord / Mastodon</li>
-              </ul>
-            </div>
-          </div>
+      </div>
+      <div>
+        <div class="card">
+          <h3 style="margin:.2rem 0">Contact</h3>
+          <p style="color:rgba(255,255,255,.8); font-size:.95rem">Add your preferred contact links:</p>
+          <ul class="pill-list">
+            <li>• Email: <a href="mailto:you@example.com" style="color:var(--cyan);">you@example.com</a></li>
+            <li>• Twitter/X: <a href="#" style="color:var(--cyan);">@yourhandle</a></li>
+            <li>• Itch.io / Discord / Mastodon</li>
+          </ul>
         </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-white/10">
-        <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-white/70">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-3">
-            <div className="flex items-center gap-2">
-              <Logo className="h-5 w-5" />
-              <span>© {new Date().getFullYear()} QuantumBox</span>
-            </div>
-            <p className="text-center md:text-right">
-              Indie spirit, cozy experiences — built with heart, curiosity, and creativity.
-            </p>
-          </div>
-        </div>
-      </footer>
+      </div>
     </div>
-  );
-}
+  </section>
 
-function Logo({ className = "" }) {
-  return (
-    <svg className={className} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* A small atom-like logo */}
-      <circle cx="32" cy="32" r="10" fill="#ffb400" />
-      <ellipse cx="32" cy="32" rx="22" ry="10" stroke="#79e0ff" strokeWidth="2" />
-      <ellipse cx="32" cy="32" rx="10" ry="22" stroke="#d59bff" strokeWidth="2" />
-      <ellipse cx="32" cy="32" rx="18" ry="18" transform="rotate(45 32 32)" stroke="#ff86d1" strokeWidth="2" />
-    </svg>
-  );
-}
-
-function ChestAtom({ className = "" }) {
-  return (
-    <svg className={className} viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="g1" x1="0" x2="1">
-          <stop offset="0%" stopColor="#79e0ff" />
-          <stop offset="50%" stopColor="#d59bff" />
-          <stop offset="100%" stopColor="#ff86d1" />
-        </linearGradient>
-      </defs>
-      {/* Chest */}
-      <rect x="190" y="360" width="520" height="160" rx="18" fill="#2b1a18" stroke="#a05a2c" strokeWidth="8"/>
-      <rect x="210" y="320" width="480" height="60" rx="10" fill="#34221f" stroke="#a05a2c" strokeWidth="8"/>
-      <rect x="410" y="350" width="80" height="80" rx="8" fill="#6a3a22" stroke="#a05a2c" strokeWidth="8"/>
-      <rect x="442" y="380" width="16" height="25" rx="3" fill="#1b0f0c"/>
-      {/* Atom orbits */}
-      <g opacity="0.95">
-        <ellipse cx="450" cy="210" rx="210" ry="85" fill="none" stroke="url(#g1)" strokeWidth="8"/>
-        <ellipse cx="450" cy="210" rx="85" ry="210" fill="none" stroke="url(#g1)" strokeWidth="8"/>
-        <ellipse transform="rotate(45 450 210)" cx="450" cy="210" rx="170" ry="170" fill="none" stroke="url(#g1)" strokeWidth="8"/>
-        <circle cx="450" cy="210" r="30" fill="#ff86d1" />
-        <circle cx="600" cy="190" r="12" fill="#79e0ff" />
-        <circle cx="320" cy="190" r="12" fill="#79e0ff" />
-        <circle cx="450" cy="80" r="12" fill="#79e0ff" />
-      </g>
-    </svg>
-  );
-}
-
-function InfoCard({ title, points }) {
-  return (
-    <div className="rounded-2xl border border-white/15 p-5 bg-white/5">
-      <h3 className="font-semibold">{title}</h3>
-      <ul className="mt-3 space-y-1 text-white/75 text-sm">
-        {points.map((p, i) => (
-          <li key={i}>• {p}</li>
-        ))}
-      </ul>
+  <footer>
+    <div class="container" style="padding: 1.2rem 0; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.8rem;">
+      <div style="display:flex; align-items:center; gap:.5rem;">
+        <span class="logo"><span class="logo-dot"></span></span>
+        <span>© <span id="y"></span> QuantumBox</span>
+      </div>
+      <p style="margin:0; opacity:.85">Indie spirit, cozy experiences — built with heart, curiosity, and creativity.</p>
     </div>
-  );
-}
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
