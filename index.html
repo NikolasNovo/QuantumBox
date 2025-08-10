@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>QuantumBox — Cozy Indie Games & Apps</title>
-  <meta name="description" content="QuantumBox — Beginner indie developer crafting cozy games and apps with heart. First release: Milky Way Star. Less noise, more soul." />
-  <meta property="og:title" content="QuantumBox — Cozy Indie Games & Apps" />
-  <meta property="og:description" content="Beginner indie developer creating warm, heartfelt games & apps. Discover Milky Way Star and future cozy adventures." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0a0317" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuantumBox — Cozy Indie Apps & Games</title>
+  <meta name="description" content="QuantumBox — Beginner indie dev making cozy apps & games with heart. First game: Milky Way Star.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg1:#0a0317; --bg2:#120824; --bg3:#0b0420;
-      --cyan:#79e0ff; --fuchsia:#d59bff; --rose:#ff86d1; --amber:#ffb400;
-      --text:#fff; --muted:rgba(255,255,255,.78);
-      --accent:#e1152a; /* красный акцент в духе CDPR */
-      --accent-2:#ff445e;
-      --border:rgba(255,255,255,.12);
-      --glow:0 10px 30px rgba(225,21,42,.35);
+    :root {
+      --bg1: #0a0317;
+      --bg2: #120824;
+      --bg3: #0b0420;
+      --cyan: #79e0ff;
+      --fuchsia: #d59bff;
+      --rose: #ff86d1;
+      --amber: #ffb400;
+      --text: #ffffff;
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0; color:var(--text);
-      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+      color: var(--text);
       background:
-        radial-gradient(1200px 800px at 70% 10%, rgba(213,155,255,.14), transparent 60%),
-        radial-gradient(900px 700px at 25% 75%, rgba(121,224,255,.12), transparent 60%),
+        radial-gradient(800px 600px at 80% 20%, rgba(180,77,255,0.14), transparent 60%),
+        radial-gradient(700px 500px at 20% 70%, rgba(77,208,255,0.12), transparent 60%),
         linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 50%, var(--bg3) 100%);
-      line-height:1.6;
+      min-height: 100vh;
+      line-height: 1.6;
     }
-    .stars{position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.5;
+    .stars {
+      position: fixed; inset: 0; pointer-events: none; opacity: .35; z-index: -1;
       background-image:
         radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,.8) 40%, transparent 41%),
         radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,.7) 40%, transparent 41%),
@@ -40,286 +40,155 @@
         radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,.7) 40%, transparent 41%);
       background-size: 280px 280px, 360px 360px, 320px 320px, 420px 420px;
     }
-    .container{max-width:1200px; margin:0 auto; padding:0 20px}
-    header.nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background:rgba(10,8,24,.55);
-      border-bottom:1px solid var(--border);
-      transition:all .25s ease;
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+    header.nav {
+      position: sticky; top: 0; backdrop-filter: blur(8px);
+      background: rgba(13,8,32,.6); border-bottom: 1px solid rgba(255,255,255,.1); z-index: 20;
     }
-    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
-    .brand{display:flex; gap:.6rem; align-items:center; text-decoration:none; color:var(--text); font-weight:700; letter-spacing:.02em}
-    .logo{position:relative; width:28px; height:28px}
-    .logo:before,.logo:after{content:""; position:absolute; inset:0; border-radius:50%; border:2px solid var(--cyan); transform:rotate(32deg)}
-    .logo:after{border-color:var(--fuchsia); transform:rotate(-32deg)}
-    .logo-dot{position:absolute; inset:8px; border-radius:50%; background:var(--amber)}
-    .navlinks{display:flex; gap:18px; align-items:center}
-    .navlinks a{position:relative; color:#e9e9ee; text-decoration:none; font-weight:600; font-size:.95rem; padding:6px 2px}
-    .navlinks a:after{
-      content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; border-radius:2px;
-      background:linear-gradient(90deg, var(--accent), var(--accent-2));
-      transform:scaleX(0); transform-origin:left; transition:transform .2s ease;
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; padding: 10px 0; }
+    .brand { display:flex; align-items:center; gap:8px; font-weight:600; letter-spacing:.02em; text-decoration:none; color:var(--text);}
+    .navlinks a { color:#e9e9ee; text-decoration:none; margin-left:14px; font-size:15px; padding:8px 10px; border-radius:10px; }
+    .navlinks a:active, .navlinks a:hover { background: rgba(255,255,255,.08); color: var(--cyan); }
+    section { padding: 48px 0; }
+    @media (min-width: 900px) { section { padding: 72px 0; } }
+    h1 { font-size: clamp(28px, 5vw, 56px); margin: 0; line-height: 1.1; }
+    h2 { font-size: clamp(22px, 3.2vw, 36px); margin: 0 0 8px; }
+    p.lead { color: rgba(255,255,255,.88); font-size: clamp(16px, 2.2vw, 18px); margin-top: 12px; }
+    .grid { display:grid; gap: 20px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    @media (min-width: 900px) { .grid-2 { grid-template-columns: 1.2fr 1fr; gap: 32px; } }
+    .badge { display:inline-flex; align-items:center; gap:8px; letter-spacing:.2em; text-transform:uppercase; font-size:12px; color: rgba(193,244,255,.95); }
+    .dot { width:6px; height:6px; border-radius:999px; background: var(--cyan); display:inline-block; }
+    .frame { border-radius: 16px; overflow:hidden; border:1px solid rgba(255,255,255,.15); box-shadow: 0 16px 36px rgba(0,0,0,.35); background:#0d1a3a; }
+    figure { margin:0; }
+    figcaption { text-align:center; padding:10px 12px; color: rgba(255,255,255,.7); font-size:14px; }
+    .card { border-radius:16px; border:1px solid rgba(255,255,255,.15); padding:14px; background: rgba(255,255,255,.06); }
+    footer { border-top:1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.85); }
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan), var(--fuchsia), var(--rose));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    .navlinks a:hover:after, .navlinks a.is-active:after{transform:scaleX(1)}
-    .nav-cta{
-      margin-left:6px;
-      display:inline-flex; align-items:center; gap:.55rem;
-      text-decoration:none; font-weight:800;
-      color:#0b0614; background:linear-gradient(90deg,var(--accent),var(--accent-2));
-      padding:10px 14px; border-radius:12px; box-shadow:var(--glow); border:1px solid rgba(255,255,255,.08);
-      transition:transform .12s ease, box-shadow .2s ease, filter .2s ease;
+    .logo { width:26px; height:26px; display:inline-block; position: relative; }
+    .logo:before, .logo:after { content:""; position:absolute; inset:0; border-radius:50%; border:2px solid var(--cyan); transform: rotate(35deg); }
+    .logo:after { border-color: var(--fuchsia); transform: rotate(-35deg); }
+    .logo-dot { position:absolute; inset:7px; border-radius:50%; background: var(--amber); }
+    .pill-list li { margin:6px 0; color: rgba(255,255,255,.78); }
+    .hero-img { width:100%; height:auto; display:block; border-radius: 16px; }
+    img { max-width: 100%; height: auto; }
+    a, button { min-height: 44px; }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
     }
-    .nav-cta:hover{transform:translateY(-1px); filter:saturate(1.1)}
-    main section{padding:86px 0}
-    .grid{display:grid; gap:28px}
-    @media (min-width: 980px){.grid-hero{grid-template-columns:1.2fr 1fr}}
-    h1{font-size: clamp(2.4rem, 4.6vw, 4rem); line-height:1.05; margin:0}
-    h2{font-size: clamp(1.8rem, 2.6vw, 2.4rem); margin:0 0 .5rem}
-    p.lead{color:var(--muted); font-size:1.12rem; margin-top:1rem}
-    .gradient-text{
-      background:linear-gradient(90deg, var(--cyan), var(--fuchsia), var(--rose));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
-    .btn{display:inline-flex; align-items:center; gap:.6rem; font-weight:800; text-decoration:none; border-radius:14px; padding:14px 18px; transition:.2s ease; border:1px solid var(--border); color:#fff}
-    .btn svg{width:18px; height:18px}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#0b0614; box-shadow:var(--glow); border-color:rgba(255,255,255,.05)}
-    .btn-primary:hover{transform:translateY(-1px); filter:saturate(1.05)}
-    .btn-ghost{background:rgba(255,255,255,.06)}
-    .btn-ghost:hover{border-color:rgba(255,255,255,.35)}
-    .badge{display:inline-flex; align-items:center; gap:.5rem; letter-spacing:.2em; text-transform:uppercase; font-size:.7rem; color:rgba(193,244,255,.95)}
-    .dot{width:6px; height:6px; border-radius:999px; background:var(--cyan); display:inline-block}
-    .frame{border-radius:18px; overflow:hidden; border:1px solid var(--border); background:#0d1a3a; box-shadow:0 20px 40px rgba(0,0,0,.35)}
-    figure{margin:0} figcaption{text-align:center; padding:.7rem 1rem; color:rgba(255,255,255,.7); font-size:.92rem}
-    .card{border-radius:18px; border:1px solid var(--border); padding:18px; background:rgba(255,255,255,.05); transition:transform .2s ease, box-shadow .2s ease}
-    .card:hover{transform:translateY(-2px); box-shadow:0 14px 36px rgba(0,0,0,.35)}
-    /* Диагональные разделители секций */
-    .section-edge{position:relative}
-    .section-edge:before{content:""; position:absolute; left:0; right:0; top:-60px; height:60px;
-      background:linear-gradient(90deg, rgba(225,21,42,.18), rgba(213,155,255,.12) 40%, rgba(121,224,255,.12));
-      transform:skewY(-2.2deg); transform-origin:left;
-      filter:blur(6px); opacity:.7;
-    }
-    footer{border-top:1px solid var(--border)}
-    /* Reveal-on-scroll */
-    .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
-    .reveal.visible{opacity:1; transform:none}
-    /* Back to top */
-    .to-top{position:fixed; right:18px; bottom:18px; z-index:40; opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease}
-    .to-top.show{opacity:1; pointer-events:auto}
-    .to-top .btn{padding:12px 14px}
-    /* Shrink on scroll */
-    .shrink header.nav{background:rgba(10,8,24,.7)}
-    .shrink .nav-inner{padding:10px 0}
   </style>
 </head>
 <body>
   <div class="stars"></div>
 
-  <!-- NAV -->
+  <!-- Nav -->
   <header class="nav">
     <div class="container nav-inner">
       <a href="#home" class="brand">
         <span class="logo"><span class="logo-dot"></span></span>
         <span>QuantumBox</span>
       </a>
-      <nav class="navlinks" id="navlinks">
-        <a href="#home" class="is-active">Home</a>
+      <nav class="navlinks">
+        <a href="#home">Home</a>
         <a href="#game">Milky Way Star</a>
         <a href="#about">About</a>
       </nav>
-      <a class="nav-cta" href="#game" aria-label="Play the first game">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M5 3h14v14H9l-4 4V3z" stroke="#fff" stroke-width="1.5"/></svg>
-        Play
-      </a>
     </div>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section id="home" class="section-edge">
-      <div class="container grid grid-hero">
-        <div class="reveal">
-          <h1>
-            Welcome to <span class="gradient-text">QuantumBox</span>
-          </h1>
-          <p class="lead">
-            Beginner indie dev turning ideas into cozy apps &amp; games—less noise, more heart, made for real people.
-          </p>
-          <div style="margin-top:1.1rem; display:flex; gap:.6rem; flex-wrap:wrap">
-            <a class="btn btn-primary" href="#game">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M8 5l10 7-10 7V5z" stroke="#0b0614" stroke-width="2"/></svg>
-              See the first game
-            </a>
-            <a class="btn btn-ghost" href="#about">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M12 12v6M12 6h.01" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-              About me
-            </a>
-          </div>
-          <ul style="margin-top:1rem; padding-left:0; list-style:none; color:var(--muted)">
-            <li>• Cozy vibes, small scope, polished feel</li>
-            <li>• Built with curiosity, patience, and love for players</li>
-            <li>• Neon-cosmic palette with warm gold accents</li>
-          </ul>
-        </div>
-        <div class="reveal">
-          <figure class="frame">
-            <!-- ЗАМЕНИ на свои пути/баз64 -->
-            <img src="images/hero.png" alt="QuantumBox cosmic hero" style="width:100%; display:block">
-          </figure>
-        </div>
+  <!-- Hero -->
+  <section id="home">
+    <div class="container grid grid-2">
+      <div>
+        <h1>Welcome to <span class="gradient-text">QuantumBox</span></h1>
+        <p class="lead">Beginner indie dev turning ideas into cozy apps &amp; games—less noise, more heart, made for real people.</p>
+        <ul class="pill-list" style="margin-top:12px">
+          <li>• Cozy vibes, small scope, polished feel</li>
+          <li>• Built with curiosity, patience, and love for players</li>
+          <li>• Neon-cosmic palette with warm gold accents</li>
+        </ul>
       </div>
-    </section>
-
-    <!-- GAME -->
-    <section id="game">
-      <div class="container grid" style="grid-template-columns:1.1fr 1fr">
-        <div class="reveal">
-          <div class="badge"><span class="dot"></span>New Release</div>
-          <h2>Milky Way Star</h2>
-          <p class="lead">A bite-size, starry arcade where simple taps guide a little light through the Milky Way. Easy to learn, soothing to play.</p>
-          <ul style="margin:.8rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
-            <li>• One-thumb controls — perfect for quick sessions</li>
-            <li>• Cozy pixel art & gentle space ambience</li>
-            <li>• Goals, high scores, and a calm, replayable loop</li>
-          </ul>
-          <div style="margin-top:1.1rem; display:flex; gap:.6rem; flex-wrap:wrap">
-            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M12 4v16" stroke="#0b0614" stroke-width="2" stroke-linecap="round"/></svg>
-              Play on Google Play
-            </a>
-            <a class="btn btn-ghost" href="#">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M6 4h12v16H6zM9 8h6M9 12h6M9 16h6" stroke="#fff" stroke-width="2"/></svg>
-              Press kit
-            </a>
-          </div>
-        </div>
-        <div class="reveal">
-          <figure class="frame">
-            <!-- ЗАМЕНИ на свои пути/баз64 -->
-            <img src="images/milkywaystar.jpg" alt="Milky Way Star screenshot" style="width:100%; display:block">
-            <figcaption>Milky Way Star — WIP screenshot</figcaption>
-          </figure>
-        </div>
+      <div>
+        <img class="hero-img" src="PASTE_YOUR_BASE64_OR_IMAGE_PATH_HERE" alt="QuantumBox atom rising from a treasure chest">
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section-edge">
-      <div class="container grid" style="grid-template-columns:2fr 1fr">
-        <div class="reveal">
-          <h2>About Me</h2>
-          <p class="lead">Hi! I’m the solo developer behind <strong>QuantumBox</strong>. I’m just starting my indie journey—learning in public, keeping scope small, and focusing on warm, feel-good experiences.</p>
-          <p class="lead">I believe in cozy vibes, respectful design, and games that brighten a day. If you’d like to follow along or collaborate, drop me a line below.</p>
-          <div class="grid" style="grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:18px; margin-top:.6rem">
-            <div class="card">
-              <h3 style="margin:.2rem 0">Focus</h3>
-              <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
-                <li>• Cozy arcade & puzzles</li>
-                <li>• Tiny, polished apps</li>
-                <li>• Mobile-first UX</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h3 style="margin:.2rem 0">Values</h3>
-              <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
-                <li>• Less noise, more heart</li>
-                <li>• Player kindness</li>
-                <li>• Craft over hype</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="reveal">
+  <!-- Game -->
+  <section id="game">
+    <div class="container grid grid-2">
+      <div>
+        <div class="badge"><span class="dot"></span>New Release</div>
+        <h2>Milky Way Star</h2>
+        <p class="lead">A bite-size, starry arcade where simple taps guide a little light through the Milky Way. Easy to learn, soothing to play.</p>
+        <ul class="pill-list">
+          <li>• One-thumb controls — perfect for quick sessions</li>
+          <li>• Cozy pixel art & gentle space ambience</li>
+          <li>• Goals, high scores and a calm, replayable loop</li>
+        </ul>
+      </div>
+      <div>
+        <figure class="frame">
+          <img src="PASTE_YOUR_BASE64_OR_IMAGE_PATH_HERE" alt="Milky Way Star screenshot">
+          <figcaption>Milky Way Star ingame screenshot</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container grid" style="grid-template-columns: 1fr; gap:20px;">
+      <div>
+        <h2>About Me</h2>
+        <p class="lead">Hi! I’m the solo developer behind <strong>QuantumBox</strong>. I’m just starting my indie journey, learning in public, keeping scope small, and focusing on warm, feel-good experiences.</p>
+        <p class="lead">I believe in cozy vibes, respectful design and games that brighten a day. If you’d like to follow along or collaborate, drop me a line below.</p>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
           <div class="card">
-            <h3 style="margin:.2rem 0">Contact</h3>
-            <p style="color:var(--muted); font-size:.95rem">Add your preferred contact links:</p>
-            <ul style="margin:.3rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
-              <li>• Email: <a href="mailto:quantumboxgamesofficial@gmail.com" style="color:var(--cyan); text-decoration:underline">you@example.com</a></li>
-              <li>• Twitter/X: <a href="#" style="color:var(--cyan); text-decoration:underline">@yourhandle</a></li>
-              <li>• Itch.io / Discord / Mastodon</li>
+            <h3 style="margin:.2rem 0">Focus</h3>
+            <ul class="pill-list">
+              <li>• Cozy arcade & puzzles</li>
+              <li>• Tiny, polished apps</li>
+              <li>• Mobile-first UX</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 style="margin:.2rem 0">Values</h3>
+            <ul class="pill-list">
+              <li>• Less noise, more heart</li>
+              <li>• Player kindness</li>
+              <li>• Craft over hype</li>
             </ul>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+      <div>
+        <div class="card">
+          <h3 style="margin:.2rem 0">Contact</h3>
+          <ul class="pill-list" style="margin-top:8px">
+            <li>• Email: <a href="mailto:quantumboxgamesofficial@gmail.com" style="color:var(--cyan);">quantumboxgamesofficial@gmail.com</a></li>
+            <li>• Twitter/X: <!--<a href="#" style="color:var(--cyan);">@yourhandle</a></li>-->
+            <li>• Itch.io / Discord / Mastodon</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <div class="container" style="padding: 18px 0; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.8rem;">
-      <div style="display:flex; align-items:center; gap:.5rem;">
+    <div class="container" style="padding: 14px 0; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px;">
+      <div style="display:flex; align-items:center; gap:8px;">
         <span class="logo"><span class="logo-dot"></span></span>
         <span>© <span id="y"></span> QuantumBox</span>
       </div>
-      <p style="margin:0; opacity:.85">Indie spirit, cozy experiences — built with heart, curiosity, and creativity.</p>
+      <p style="margin:0; opacity:.9; font-size:14px">Indie spirit, cozy experiences — built with heart, curiosity, and creativity.</p>
     </div>
   </footer>
 
-  <!-- Back to top -->
-  <div class="to-top" id="toTop">
-    <a class="btn btn-ghost" href="#home" aria-label="Back to top">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5M6 11l6-6 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-    </a>
-  </div>
-
-  <script>
-    // Smooth scroll with header offset + active link highlight
-    (function(){
-      const header = document.querySelector('header.nav');
-      const links = Array.from(document.querySelectorAll('.navlinks a'));
-      const toTop = document.getElementById('toTop');
-
-      function goTo(hash){
-        const el = document.querySelector(hash);
-        if(!el) return;
-        const rect = el.getBoundingClientRect();
-        const top = window.scrollY + rect.top - (header.offsetHeight + 8);
-        window.scrollTo({ top, behavior:'smooth' });
-      }
-
-      links.forEach(a=>{
-        a.addEventListener('click', (e)=>{
-          const href = a.getAttribute('href');
-          if(href && href.startsWith('#')){
-            e.preventDefault();
-            goTo(href);
-          }
-        });
-      });
-
-      // Intersection Observer for reveal animations
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-        });
-      },{threshold:.14});
-      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-      // Active nav item on scroll
-      const sections = ['#home','#game','#about'].map(id=>document.querySelector(id)).filter(Boolean);
-      const spy = ()=>{
-        const y = window.scrollY + header.offsetHeight + 20;
-        let current = '#home';
-        for(const s of sections){
-          if(y >= s.offsetTop) current = '#'+s.id;
-        }
-        links.forEach(a=>a.classList.toggle('is-active', a.getAttribute('href')===current));
-      };
-      window.addEventListener('scroll', spy, {passive:true}); spy();
-
-      // Header shrink + to-top button
-      const onScroll = ()=>{
-        document.body.classList.toggle('shrink', window.scrollY > 30);
-        if(window.scrollY > 500){ toTop.classList.add('show'); } else { toTop.classList.remove('show'); }
-      };
-      window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
-
-      // If page opened with hash, offset it
-      if(location.hash){ setTimeout(()=>goTo(location.hash), 50); }
-    })();
-    // Set year
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
-
