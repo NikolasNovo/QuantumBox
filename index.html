@@ -206,7 +206,7 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- ABOUT 
     <section id="about" class="section-edge">
       <div class="container grid" style="grid-template-columns:2fr 1fr">
         <div class="reveal">
@@ -235,17 +235,87 @@
         <div class="reveal">
           <div class="card">
             <h3 style="margin:.2rem 0">Contact</h3>
-            <!--<p style="color:var(--muted); font-size:.95rem">Add your preferred contact links:</p>-->
+            <!--<p style="color:var(--muted); font-size:.95rem">Add your preferred contact links:</p>
             <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
               <li>• Email: <a href="mailto:quantumboxgamesofficial@gmail.com" style="color:var(--cyan); text-decoration:underline">quantumboxgamesofficial@gmail.com</a></li>
               <!--<li>• Twitter/X: <a href="#" style="color:var(--cyan); text-decoration:underline">@yourhandle</a></li>
-              <li>• Itch.io / Discord / Mastodon</li>-->
+              <li>• Itch.io / Discord / Mastodon</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
-  </main>
+  </main>-->
+<!-- ABOUT -->
+<section id="about" class="section-edge">
+  <div class="container">
+    <div class="reveal">
+      <h2>About Me</h2>
+      <p class="lead">
+        Hi! I’m the solo developer behind <strong>QuantumBox</strong>. 
+        I’m just starting my indie journey, learning in public, keeping scope small 
+        and focusing on warm feel-good experiences.
+      </p>
+      <p class="lead">
+        I believe in cozy vibes, respectful design and games that brighten a day. 
+        If you’d like to follow along or collaborate drop me a line below.
+      </p>
+
+      <!-- Гибкая сетка с порядком элементов -->
+      <div class="grid about-grid" style="gap:18px; margin-top:.6rem">
+        
+        <div class="card" style="order:1">
+          <h3 style="margin:.2rem 0">Focus</h3>
+          <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
+            <li>• Cozy arcade & puzzles</li>
+            <li>• Tiny polished apps</li>
+            <li>• Mobile-first UX</li>
+          </ul>
+        </div>
+
+        <div class="card" style="order:2">
+          <h3 style="margin:.2rem 0">Values</h3>
+          <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
+            <li>• Less noise, more heart</li>
+            <li>• Warm playing experience</li>
+            <li>• Craft over hype</li>
+          </ul>
+        </div>
+
+        <div class="card contact-card" style="order:3">
+          <h3 style="margin:.2rem 0">Contact</h3>
+          <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
+            <li>• Email: 
+              <a href="mailto:quantumboxgamesofficial@gmail.com" 
+                 style="color:var(--cyan); text-decoration:underline">
+                 quantumboxgamesofficial@gmail.com
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Сетка для About */
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  }
+
+  @media (min-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    /* Contact всегда справа */
+    .contact-card {
+      order: 3 !important;
+    }
+  }
+</style>
 
   <footer>
     <div class="container" style="padding: 18px 0; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.8rem;">
@@ -324,6 +394,7 @@
   </script>
 </body>
 </html>
+
 
 
 
