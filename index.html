@@ -111,6 +111,43 @@
     /* Shrink on scroll */
     .shrink header.nav{background:rgba(10,8,24,.7)}
     .shrink .nav-inner{padding:10px 0}
+/* Здесь начинается настройка для мобилок */
+@media (max-width: 900px) {
+  .grid-hero,
+  #game .container.grid,
+  #about .container.grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  header.nav .navlinks {
+    display: none; /* спрячем на мобилках — можно заменить на бургер */
+  }
+
+  header.nav .nav-cta {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  main section {
+    padding: 48px 0;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  figure.frame {
+    margin-top: 1rem;
+  }
+}
+/* Здесь заканчивается настройка для мобилок */
   </style>
 </head>
 <body>
@@ -129,9 +166,9 @@
         <a href="#about">About</a>
       </nav>
       <a class="nav-cta" href="#game" aria-label="Play the first game">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M5 3h14v14H9l-4 4V3z" stroke="#fff" stroke-width="1.5"/></svg>
+        <!--<svg viewBox="0 0 24 24" fill="none"><path d="M5 3h14v14H9l-4 4V3z" stroke="#fff" stroke-width="1.5"/></svg>
         Play
-      </a>
+      </a>-->
     </div>
   </header>
 
@@ -144,7 +181,7 @@
             Welcome to <span class="gradient-text">QuantumBox</span>
           </h1>
           <p class="lead">
-            Beginner indie dev turning ideas into cozy apps &amp; games—less noise, more heart, made for real people.
+            Beginner indie dev turning ideas into cozy apps &amp; games! Less noise more heart, made for real people.
           </p>
           <div style="margin-top:1.1rem; display:flex; gap:.6rem; flex-wrap:wrap">
             <a class="btn btn-primary" href="#game">
@@ -157,8 +194,8 @@
             </a>
           </div>
           <ul style="margin-top:1rem; padding-left:0; list-style:none; color:var(--muted)">
-            <li>• Cozy vibes, small scope, polished feel</li>
-            <li>• Built with curiosity, patience, and love for players</li>
+            <li>• Cozy vibes, small scope</li>
+            <li>• Built with curiosity patience and love for players</li>
             <li>• Neon-cosmic palette with warm gold accents</li>
           </ul>
         </div>
@@ -216,7 +253,7 @@
               <h3 style="margin:.2rem 0">Focus</h3>
               <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
                 <li>• Cozy arcade & puzzles</li>
-                <li>• Tiny, polished apps</li>
+                <li>• Tiny polished apps</li>
                 <li>• Mobile-first UX</li>
               </ul>
             </div>
@@ -233,7 +270,7 @@
         <div class="reveal">
           <div class="card">
             <h3 style="margin:.2rem 0">Contact</h3>
-            <p style="color:var(--muted); font-size:.95rem">Add your preferred contact links:</p>
+            <!--<p style="color:var(--muted); font-size:.95rem">Add your preferred contact links:</p>-->
             <ul style="margin:.3rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
               <li>• Email: <a href="mailto:quantumboxgamesofficial@gmail.com" style="color:var(--cyan); text-decoration:underline">quantumboxgamesofficial@gmail.com</a></li>
               <!--<li>• Twitter/X: <a href="#" style="color:var(--cyan); text-decoration:underline">@yourhandle</a></li>
@@ -251,7 +288,7 @@
         <span class="logo"><span class="logo-dot"></span></span>
         <span>© <span id="y"></span> QuantumBox</span>
       </div>
-      <p style="margin:0; opacity:.85">Indie spirit, cozy experiences — built with heart, curiosity, and creativity.</p>
+      <p style="margin:0; opacity:.85">Indie spirit, cozy experiences built with heart curiosity and creativity.</p>
     </div>
   </footer>
 
@@ -322,4 +359,5 @@
   </script>
 </body>
 </html>
+
 
