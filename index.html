@@ -3,14 +3,45 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- BASIC SEO -->
   <title>QuantumBox - Cozy Indie Games & Apps</title>
   <meta name="description" content="QuantumBox - Beginner indie developer crafting cozy games and apps with heart. First release: Milky Way Star. Less noise, more soul." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="author" content="QuantumBox" />
+  <link rel="canonical" href="https://nikolasnovo.github.io/QuantumBox/" />
+
+  <!-- OPEN GRAPH (SOCIAL PREVIEW) -->
   <meta property="og:title" content="QuantumBox - Cozy Indie Games & Apps" />
   <meta property="og:description" content="Beginner indie developer creating warm, heartfelt games & apps. Discover Milky Way Star and future cozy adventures." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nikolasnovo.github.io/QuantumBox/" />
+  <meta property="og:site_name" content="QuantumBox" />
+  <!-- Подготовь этот файл под social-превью (пример: 1200x630) -->
+  <meta property="og:image" content="https://nikolasnovo.github.io/QuantumBox/images/og-quantumbox.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="QuantumBox - Cozy Indie Games & Apps" />
+  <meta name="twitter:description" content="Cozy indie games & apps made with heart. First release: Milky Way Star." />
+  <meta name="twitter:image" content="https://nikolasnovo.github.io/QuantumBox/images/og-quantumbox.jpg" />
+
+  <!-- THEME COLOR -->
   <meta name="theme-color" content="#0a0317" />
+
+  <!-- FAVICON / ICONS (положи файлы в /icons/ при желании) -->
+  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" />
+  <link rel="icon" href="icons/favicon-16.png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- STYLES -->
   <style>
     :root{
       --bg1:#0a0317; --bg2:#120824; --bg3:#0b0420;
@@ -111,11 +142,76 @@
     /* Shrink on scroll */
     .shrink header.nav{background:rgba(10,8,24,.7)}
     .shrink .nav-inner{padding:10px 0}
-/* Здесь начинается настройка для мобилок */
-/* Здесь заканчивается настройка для мобилок */
+
+    /* Сетка для блока About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+    @media (min-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .contact-card {
+        order: 3 !important; /* Contact всегда справа на десктопе */
+      }
+    }
+
+    /* Здесь начинается настройка для мобилок */
+    /* Здесь заканчивается настройка для мобилок */
   </style>
-<!--Проверка Google на ownership-->
-<meta name="google-site-verification" content="-_5NjVnyXvrmVQV3cgqzHmSUawSUjPQ4Xytq-xzpm6o" />
+
+  <!-- Google Search Console ownership -->
+  <meta name="google-site-verification" content="-_5NjVnyXvrmVQV3cgqzHmSUawSUjPQ4Xytq-xzpm6o" />
+
+  <!-- STRUCTURED DATA: ORGANIZATION + WEBSITE + GAME -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://nikolasnovo.github.io/QuantumBox/#organization",
+        "name": "QuantumBox",
+        "url": "https://nikolasnovo.github.io/QuantumBox/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://nikolasnovo.github.io/QuantumBox/images/og-quantumbox.jpg"
+        },
+        "sameAs": [
+          "https://quantumboxgames.itch.io/"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://nikolasnovo.github.io/QuantumBox/#website",
+        "url": "https://nikolasnovo.github.io/QuantumBox/",
+        "name": "QuantumBox - Cozy Indie Games & Apps",
+        "description": "QuantumBox - Beginner indie developer crafting cozy games and apps with heart. First release: Milky Way Star. Less noise, more soul.",
+        "publisher": {
+          "@id": "https://nikolasnovo.github.io/QuantumBox/#organization"
+        }
+      },
+      {
+        "@type": "VideoGame",
+        "@id": "https://nikolasnovo.github.io/QuantumBox/#milky-way-star",
+        "name": "Milky Way Star",
+        "url": "https://nikolasnovo.github.io/QuantumBox/#game",
+        "image": "https://nikolasnovo.github.io/QuantumBox/images/milkywaystar.jpg",
+        "description": "A bite-size, starry arcade where simple taps guide a little star through the Milky Way. Easy to learn, soothing to play.",
+        "author": {
+          "@id": "https://nikolasnovo.github.io/QuantumBox/#organization"
+        },
+        "publisher": {
+          "@id": "https://nikolasnovo.github.io/QuantumBox/#organization"
+        },
+        "operatingSystem": "ANDROID",
+        "applicationCategory": "Game"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="stars"></div>
@@ -132,10 +228,12 @@
         <a href="#game">Milky Way Star</a>
         <a href="#about">About</a>
       </nav>
-      <!--<a class="nav-cta" href="#game" aria-label="Play the first game">
+      <!--
+      <a class="nav-cta" href="#game" aria-label="Play the first game">
         <svg viewBox="0 0 24 24" fill="none"><path d="M5 3h14v14H9l-4 4V3z" stroke="#fff" stroke-width="1.5"/></svg>
-        Play-->
+        Play
       </a>
+      -->
     </div>
   </header>
 
@@ -168,8 +266,7 @@
         </div>
         <div class="reveal">
           <figure class="frame">
-            <!-- ЗАМЕНИ на свои пути/баз64 -->
-            <img src="images/hero.png" alt="QuantumBox cosmic hero" style="width:100%; display:block">
+            <img src="images/hero.png" alt="QuantumBox cozy indie games cosmic hero illustration" style="width:100%; display:block">
           </figure>
         </div>
       </div>
@@ -184,7 +281,7 @@
           <p class="lead">A bite-size, starry arcade where simple taps guide a little star through the Milky Way. Easy to learn, soothing to play.</p>
           <ul style="margin:.8rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
             <li>• One-thumb controls - perfect for quick sessions</li>
-            <li>• Cozy pixel art & gentle space ambience</li>
+            <li>• Cozy pixel art &amp; gentle space ambience</li>
             <li>• Goals, high scores and a calm, replayable loop</li>
           </ul>
           <div style="margin-top:1.1rem; display:flex; gap:.6rem; flex-wrap:wrap">
@@ -192,39 +289,49 @@
               <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M12 4v16" stroke="#0b0614" stroke-width="2" stroke-linecap="round"/></svg>
               Play on Google Play
             </a>
-            <!--<a class="btn btn-ghost" href="#">
+            <!--
+            <a class="btn btn-ghost" href="#">
               <svg viewBox="0 0 24 24" fill="none"><path d="M6 4h12v16H6zM9 8h6M9 12h6M9 16h6" stroke="#fff" stroke-width="2"/></svg>
               Press kit
-            </a>-->
+            </a>
+            -->
           </div>
         </div>
         <div class="reveal">
           <figure class="frame">
-            <!-- ЗАМЕНИ на свои пути/баз64 -->
-            <img src="images/milkywaystar.jpg" alt="Milky Way Star screenshot" style="width:100%; display:block">
+            <img src="images/milkywaystar.jpg" alt="Milky Way Star cozy mobile arcade game screenshot" style="width:100%; display:block">
             <figcaption>Milky Way Star - ingame screenshot</figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT 
+    <!-- ABOUT -->
     <section id="about" class="section-edge">
-      <div class="container grid" style="grid-template-columns:2fr 1fr">
+      <div class="container">
         <div class="reveal">
           <h2>About Me</h2>
-          <p class="lead">Hi! I’m the solo developer behind <strong>QuantumBox</strong>. I’m just starting my indie journey, learning in public, keeping scope small and focusing on warm feel-good experiences.</p>
-          <p class="lead">I believe in cozy vibes, respectful design and games that brighten a day. If you’d like to follow along or collaborate drop me a line below.</p>
-          <div class="grid" style="grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:18px; margin-top:.6rem">
-            <div class="card">
+          <p class="lead">
+            Hi! I’m the solo developer behind <strong>QuantumBox</strong>. 
+            I’m just starting my indie journey, learning in public, keeping scope small 
+            and focusing on warm feel-good experiences.
+          </p>
+          <p class="lead">
+            I believe in cozy vibes, respectful design and games that brighten a day. 
+            If you’d like to follow along or collaborate drop me a line below.
+          </p>
+
+          <div class="grid about-grid" style="margin-top:.6rem">
+            <div class="card" style="order:1">
               <h3 style="margin:.2rem 0">Focus</h3>
               <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
-                <li>• Cozy arcade & puzzles</li>
+                <li>• Cozy arcade &amp; puzzles</li>
                 <li>• Tiny polished apps</li>
                 <li>• Mobile-first UX</li>
               </ul>
             </div>
-            <div class="card">
+
+            <div class="card" style="order:2">
               <h3 style="margin:.2rem 0">Values</h3>
               <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
                 <li>• Less noise, more heart</li>
@@ -232,97 +339,40 @@
                 <li>• Craft over hype</li>
               </ul>
             </div>
-          </div>
-        </div>
-        <div class="reveal">
-          <div class="card">
-            <h3 style="margin:.2rem 0">Contact</h3>
-            <!--<p style="color:var(--muted); font-size:.95rem">Add your preferred contact links:</p>
-            <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
-              <li>• Email: <a href="mailto:quantumboxgamesofficial@gmail.com" style="color:var(--cyan); text-decoration:underline">quantumboxgamesofficial@gmail.com</a></li>
-              <!--<li>• Twitter/X: <a href="#" style="color:var(--cyan); text-decoration:underline">@yourhandle</a></li>
-              <li>• Itch.io / Discord / Mastodon</li>
-            </ul>
+
+            <div class="card contact-card" style="order:3">
+              <h3 style="margin:.2rem 0">Contact</h3>
+              <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
+                <li>
+                  • Email:
+                  <a href="mailto:quantumboxgamesofficial@gmail.com"
+                     style="color:var(--cyan); text-decoration:underline">
+                    quantumboxgamesofficial@gmail.com
+                  </a>
+                </li>
+                <li>
+                  • Itch.io:
+                  <a href="https://quantumboxgames.itch.io/"
+                     style="color:var(--cyan); text-decoration:underline"
+                     target="_blank" rel="noopener">
+                    quantumboxgames.itch.io
+                  </a>
+                </li>
+                <!--
+                <li>
+                  • Twitter/X:
+                  <a href="#" style="color:var(--cyan); text-decoration:underline">@yourhandle</a>
+                </li>
+                -->
+              </ul>
+            </div>
+
           </div>
         </div>
       </div>
     </section>
-  </main>-->
-<!-- ABOUT -->
-<section id="about" class="section-edge">
-  <div class="container">
-    <div class="reveal">
-      <h2>About Me</h2>
-      <p class="lead">
-        Hi! I’m the solo developer behind <strong>QuantumBox</strong>. 
-        I’m just starting my indie journey, learning in public, keeping scope small 
-        and focusing on warm feel-good experiences.
-      </p>
-      <p class="lead">
-        I believe in cozy vibes, respectful design and games that brighten a day. 
-        If you’d like to follow along or collaborate drop me a line below.
-      </p>
 
-      <!-- Гибкая сетка с порядком элементов -->
-      <div class="grid about-grid" style="gap:18px; margin-top:.6rem">
-        
-        <div class="card" style="order:1">
-          <h3 style="margin:.2rem 0">Focus</h3>
-          <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
-            <li>• Cozy arcade & puzzles</li>
-            <li>• Tiny polished apps</li>
-            <li>• Mobile-first UX</li>
-          </ul>
-        </div>
-
-        <div class="card" style="order:2">
-          <h3 style="margin:.2rem 0">Values</h3>
-          <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
-            <li>• Less noise, more heart</li>
-            <li>• Warm playing experience</li>
-            <li>• Craft over hype</li>
-          </ul>
-        </div>
-
-        <div class="card contact-card" style="order:3">
-          <h3 style="margin:.2rem 0">Contact</h3>
-          <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
-            <li>• Email: 
-              <a href="mailto:quantumboxgamesofficial@gmail.com" 
-                 style="color:var(--cyan); text-decoration:underline">
-                 quantumboxgamesofficial@gmail.com
-              
-              <!--<li>• Twitter/X: <a href="#" style="color:var(--cyan); text-decoration:underline">@yourhandle</a></li>-->
-              <li>• Itch.io
-                <a href="https://quantumboxgames.itch.io/" 
-                 style="color:var(--cyan); text-decoration:underline">
-              </a>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-  /* Сетка для About */
-  .about-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  }
-
-  @media (min-width: 900px) {
-    .about-grid {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-    /* Contact всегда справа */
-    .contact-card {
-      order: 3 !important;
-    }
-  }
-</style>
+  </main>
 
   <footer>
     <div class="container" style="padding: 18px 0; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.8rem;">
@@ -396,20 +446,9 @@
       // If page opened with hash, offset it
       if(location.hash){ setTimeout(()=>goTo(location.hash), 50); }
     })();
+
     // Set year
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
