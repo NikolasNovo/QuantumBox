@@ -27,7 +27,8 @@
   <meta property="og:url" content="https://nikolasnovo.github.io/QuantumBox/" />
   <meta property="og:site_name" content="QuantumBox" />
   <!-- Подготовь этот файл под social-превью (пример: 1200x630) -->
-  <meta property="og:image" content="https://nikolasnovo.github.io/QuantumBox/images/og-quantumbox.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image" content="https://nikolasnovo.github.io/QuantumBox/images/og-quantumbox.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
@@ -35,7 +36,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="QuantumBox - Cozy Indie Games & Apps" />
   <meta name="twitter:description" content="Cozy indie games & apps made with heart. First release: Milky Way Star." />
-  <meta name="twitter:image" content="https://nikolasnovo.github.io/QuantumBox/images/og-quantumbox.jpg" />
+  <meta name="twitter:image" content="https://nikolasnovo.github.io/QuantumBox/images/og-quantumbox.png" />
 
   <!-- THEME COLOR -->
   <meta name="theme-color" content="#0a0317" />
@@ -169,7 +170,100 @@
 
     /* Здесь начинается настройка для мобилок */
     /* Здесь заканчивается настройка для мобилок */
-  </style>
+  
+    /* Simple carousel */
+    .carousel {
+      position: relative;
+    }
+    .carousel-window {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+    .carousel-window img {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    .carousel-window img.is-active {
+      display: block;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: rgba(0,0,0,.45);
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .carousel-btn.prev { left: 8px; }
+    .carousel-btn.next { right: 8px; }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 0 6px;
+    }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.6);
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      opacity: .7;
+    }
+    .carousel-dot.is-active {
+      background: var(--cyan);
+      opacity: 1;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 900px) {
+      main section {
+        padding: 56px 0;
+      }
+
+      .grid-hero {
+        grid-template-columns: 1fr !important;
+      }
+
+      #game .container.grid,
+      #hero-adventure .container.grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .navlinks {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 1rem;
+      }
+
+      .frame {
+        margin-top: 12px;
+      }
+    }
+</style>
 
   <!-- Google Search Console ownership -->
   <meta name="google-site-verification" content="-_5NjVnyXvrmVQV3cgqzHmSUawSUjPQ4Xytq-xzpm6o" />
@@ -186,7 +280,7 @@
         "url": "https://nikolasnovo.github.io/QuantumBox/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://nikolasnovo.github.io/QuantumBox/images/og-quantumbox.jpg"
+          "url": "https://nikolasnovo.github.io/QuantumBox/images/og-quantumbox.png"
         },
         "sameAs": [
           "https://quantumboxgames.itch.io/"
@@ -233,6 +327,8 @@
       <nav class="navlinks" id="navlinks">
         <a href="#home" class="is-active">Home</a>
         <a href="#game">Milky Way Star</a>
+        <a href="#hero-adventure">Hero's Adventure</a>
+        <a href="#support">Support</a>
         <a href="#about">About</a>
       </nav>
       <!--
@@ -311,9 +407,102 @@
           </figure>
         </div>
       </div>
+
+    <!-- UPCOMING GAME -->
+    <section id="hero-adventure" class="section-edge">
+      <div class="container grid" style="grid-template-columns:1.1fr 1fr">
+        <div class="reveal">
+          <div class="badge"><span class="dot"></span>In Development</div>
+          <h2>Hero's Adventure</h2>
+          <p class="lead">
+            A cozy pixel-art action RPG set in a rainy medieval world. Wander forests, rivers and villages, meet gentle souls and hidden dangers, and slowly grow from a nameless wanderer into a true hero.
+          </p>
+          <ul style="margin:.8rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
+            <li>• Top-down pixel RPG in a handcrafted open world</li>
+            <li>• Dynamic weather, rain-soaked forests, rivers and winding roads</li>
+            <li>• Simple touch controls for moving, exploring and fighting</li>
+          </ul>
+          <p style="margin-top:1rem; color:var(--muted); font-size:.95rem">
+            Working title — <strong>Hero's Adventure</strong>. More adventures will appear as development goes on.
+          </p>
+        </div>
+
+        <div class="reveal">
+          <figure class="frame">
+            <div class="carousel" data-carousel="hero-adventure">
+              <div class="carousel-window">
+                <img src="images/heros-adventure-1.png" alt="Hero's Adventure pixel RPG screenshot — forest with rain" class="is-active">
+                <img src="images/heros-adventure-2.png" alt="Hero's Adventure pixel RPG screenshot — river bank under rain">
+                <img src="images/heros-adventure-3.png" alt="Hero's Adventure pixel RPG screenshot — road and river crossing">
+              </div>
+              <button class="carousel-btn prev" type="button" aria-label="Previous screenshot">‹</button>
+              <button class="carousel-btn next" type="button" aria-label="Next screenshot">›</button>
+              <div class="carousel-dots">
+                <button type="button" class="carousel-dot is-active" data-index="0" aria-label="Screenshot 1"></button>
+                <button type="button" class="carousel-dot" data-index="1" aria-label="Screenshot 2"></button>
+                <button type="button" class="carousel-dot" data-index="2" aria-label="Screenshot 3"></button>
+              </div>
+            </div>
+            <figcaption>Hero's Adventure — early WIP rainy forest &amp; rivers</figcaption>
+          </figure>
+        </div>
+      </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- SUPPORT -->
+    <section id="support" class="section-edge">
+      <div class="container">
+        <div class="reveal">
+          <h2>Support Us</h2>
+          <p class="lead">
+            If you’d like to help me keep building cozy worlds and tiny games, you can support QuantumBox with a small tip or crypto donation.
+            Every bit of support goes into time, tools and coffee for future projects.
+          </p>
+        </div>
+
+        <div class="grid support-grid" style="gap:18px; margin-top:.6rem">
+          <!-- One-time tips -->
+          <div class="card">
+            <h3 style="margin:.2rem 0">One-time Tips</h3>
+            <p style="margin:.4rem 0; color:var(--muted); font-size:.95rem">
+              The easiest way to say “thank you” for a game, an update or just a cozy vibe.
+            </p>
+            <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted); font-size:.95rem">
+              <li>• <a href="https://ko-fi.com/YOUR_KOFI" target="_blank" rel="noopener" style="color:var(--cyan); text-decoration:underline">Ko-fi</a></li>
+              <li>• <a href="https://www.buymeacoffee.com/YOUR_BMC" target="_blank" rel="noopener" style="color:var(--cyan); text-decoration:underline">Buy Me a Coffee</a></li>
+            </ul>
+          </div>
+
+          <!-- Monthly support -->
+          <div class="card">
+            <h3 style="margin:.2rem 0">Monthly Support</h3>
+            <p style="margin:.4rem 0; color:var(--muted); font-size:.95rem">
+              For people who want to follow the journey more closely and support development long-term.
+            </p>
+            <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted); font-size:.95rem">
+              <li>• <a href="https://patreon.com/YOUR_PATREON" target="_blank" rel="noopener" style="color:var(--cyan); text-decoration:underline">Patreon</a> (coming later)</li>
+              <li>• <a href="https://boosty.to/YOUR_BOOSTY" target="_blank" rel="noopener" style="color:var(--cyan); text-decoration:underline">Boosty</a> (for CIS supporters)</li>
+            </ul>
+          </div>
+
+          <!-- Crypto -->
+          <div class="card">
+            <h3 style="margin:.2rem 0">Crypto</h3>
+            <p style="margin:.4rem 0; color:var(--muted); font-size:.95rem">
+              If you prefer crypto, you can support development directly via these addresses:
+            </p>
+            <ul style="margin:.4rem 0 0 0; padding-left:0; list-style:none; color:var(--muted); font-size:.9rem; word-break:break-all">
+              <li><strong>BTC:</strong> <span>YOUR_BTC_ADDRESS_HERE</span></li>
+              <li><strong>ETH:</strong> <span>YOUR_ETH_ADDRESS_HERE</span></li>
+              <li><strong>USDT (TRC20 / ERC20):</strong> <span>YOUR_USDT_ADDRESS_HERE</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+<!-- ABOUT -->
     <section id="about" class="section-edge">
       <div class="container">
         <div class="reveal">
@@ -432,7 +621,7 @@
       document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
       // Active nav item on scroll
-      const sections = ['#home','#game','#about'].map(id=>document.querySelector(id)).filter(Boolean);
+      const sections = ['#home','#game','#hero-adventure','#support','#about'].map(id=>document.querySelector(id)).filter(Boolean);
       const spy = ()=>{
         const y = window.scrollY + header.offsetHeight + 20;
         let current = '#home';
@@ -452,6 +641,36 @@
 
       // If page opened with hash, offset it
       if(location.hash){ setTimeout(()=>goTo(location.hash), 50); }
+    })();
+
+    // Simple carousel for Hero's Adventure screenshots
+    (function(){
+      const carousel = document.querySelector('[data-carousel="hero-adventure"]');
+      if (!carousel) return;
+
+      const images = Array.from(carousel.querySelectorAll('.carousel-window img'));
+      const prevBtn = carousel.querySelector('.carousel-btn.prev');
+      const nextBtn = carousel.querySelector('.carousel-btn.next');
+      const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
+
+      if (!images.length || !prevBtn || !nextBtn) return;
+
+      let index = 0;
+      function show(i){
+        index = (i + images.length) % images.length;
+        images.forEach((img, idx) => img.classList.toggle('is-active', idx === index));
+        dots.forEach((dot, idx) => dot.classList.toggle('is-active', idx === index));
+      }
+
+      prevBtn.addEventListener('click', () => show(index - 1));
+      nextBtn.addEventListener('click', () => show(index + 1));
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const i = Number(dot.getAttribute('data-index')) || 0;
+          show(i);
+        });
+      });
     })();
 
     // Set year
