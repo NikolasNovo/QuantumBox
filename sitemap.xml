@@ -2,7 +2,12 @@
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nikolasnovo.github.io/QuantumBox/</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2026-02-21</lastmod>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://nikolasnovo.github.io/QuantumBox/applications.html</loc>
+    <lastmod>2026-02-21</lastmod>
+    <priority>0.9</priority>
   </url>
 </urlset>

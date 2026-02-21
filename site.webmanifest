@@ -1,7 +1,7 @@
-{
-  "name": "QuantumBox — Cozy Indie Games & Apps",
+﻿{
+  "name": "QuantumBox - Cozy Indie Games & Apps",
   "short_name": "QuantumBox",
-  "description": "Beginner indie developer turning ideas into cozy games & apps—less noise, more heart, made for real people.",
+  "description": "Beginner indie developer turning ideas into cozy games and apps - less noise, more heart, made for real people.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
