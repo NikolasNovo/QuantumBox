@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>QuantumBox Applications - Practical Software by Nikolas Novo</title>
-  <meta name="description" content="QuantumBox applications: practical software products built by Nikolas Novo. Explore Pockex and upcoming productivity tools." />
+  <title data-i18n="apps.meta.title">QuantumBox Applications - Practical Software by Nikolas Novo</title>
+  <meta name="description" content="QuantumBox applications: practical software products built by Nikolas Novo. Explore Pockex and upcoming productivity tools." data-i18n-attr="content:apps.meta.description" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="author" content="QuantumBox" />
   <link rel="canonical" href="https://nikolasnovo.github.io/QuantumBox/applications.html" />
@@ -32,6 +32,7 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/shared.css" />
 
   <style>
     :root{
@@ -46,9 +47,25 @@
       --primary-soft:#dce8ff;
       --success:#1f8b55;
       --shadow:0 18px 44px rgba(18,39,68,.12);
+      --container-max:1160px;
+      --nav-bg:rgba(248,252,255,.86);
+      --nav-bg-scrolled:rgba(248,252,255,.95);
+      --nav-border:rgba(19,36,59,.09);
+      --footer-border:var(--line);
+      --brand-color:var(--text);
+      --logo-ring-1:#4ea3ff;
+      --logo-ring-2:#8db6ff;
+      --logo-dot:#ffd26d;
+      --nav-link-color:var(--muted);
+      --nav-link-active:var(--text);
+      --nav-link-underline:var(--primary);
+      --nav-toggle-bg:#fff;
+      --nav-toggle-border:var(--line);
+      --nav-toggle-bar:#273a56;
+      --nav-mobile-bg:#fff;
+      --nav-mobile-border:var(--line);
+      --nav-mobile-shadow:0 18px 36px rgba(16,31,56,.14);
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
     body{
       margin:0;
       color:var(--text);
@@ -59,57 +76,6 @@
         linear-gradient(180deg, var(--bg) 0%, #f8fbff 42%, #eef3fb 100%);
       line-height:1.6;
     }
-    .container{max-width:1160px; margin:0 auto; padding:0 20px}
-
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:60;
-      border-bottom:1px solid rgba(19,36,59,.09);
-      background:rgba(248,252,255,.86);
-      backdrop-filter:blur(10px);
-    }
-    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:20px; padding:14px 0}
-    .brand{display:inline-flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); font-weight:800; letter-spacing:.01em}
-    .logo{position:relative; width:28px; height:28px}
-    .logo:before,.logo:after{content:""; position:absolute; inset:0; border-radius:50%; border:2px solid #4ea3ff; transform:rotate(32deg)}
-    .logo:after{border-color:#8db6ff; transform:rotate(-32deg)}
-    .logo-dot{position:absolute; inset:8px; border-radius:50%; background:#ffd26d}
-
-    .navlinks{display:flex; align-items:center; gap:18px}
-    .navlinks a{
-      color:var(--muted);
-      text-decoration:none;
-      font-weight:700;
-      font-size:.95rem;
-      padding:7px 2px;
-      border-bottom:2px solid transparent;
-      transition:color .18s ease, border-color .18s ease;
-    }
-    .navlinks a:hover,
-    .navlinks a.is-active{
-      color:var(--text);
-      border-color:var(--primary);
-    }
-
-    .nav-toggle{
-      display:none;
-      width:42px;
-      height:42px;
-      border:1px solid var(--line);
-      background:#fff;
-      border-radius:10px;
-      padding:0;
-      align-items:center;
-      justify-content:center;
-      flex-direction:column;
-      gap:4px;
-      cursor:pointer;
-    }
-    .nav-toggle span{width:18px; height:2px; background:#273a56; border-radius:2px; transition:transform .2s ease, opacity .2s ease}
-    .nav-open .nav-toggle span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-    .nav-open .nav-toggle span:nth-child(2){opacity:0}
-    .nav-open .nav-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
     .hero{padding:82px 0 36px}
     .eyebrow{
@@ -230,31 +196,7 @@
     .footer-inner{padding:18px 0 26px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between}
     .footer-note{margin:0; color:var(--muted)}
 
-    .reveal{opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease}
-    .reveal.visible{opacity:1; transform:none}
-
     @media (max-width: 920px){
-      .nav-inner{position:relative}
-      .nav-toggle{display:inline-flex}
-      .navlinks{
-        position:absolute;
-        top:calc(100% + 10px);
-        left:0;
-        right:0;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:8px;
-        padding:14px;
-        background:#fff;
-        border:1px solid var(--line);
-        border-radius:14px;
-        box-shadow:0 18px 36px rgba(16,31,56,.14);
-        opacity:0;
-        transform:translateY(-10px);
-        pointer-events:none;
-        transition:opacity .2s ease, transform .2s ease;
-      }
-      .nav-open .navlinks{opacity:1; transform:translateY(0); pointer-events:auto}
       .hero{padding-top:64px}
       .app-grid{grid-template-columns:1fr}
       .cards{grid-template-columns:1fr}
@@ -263,7 +205,7 @@
     }
   </style>
 </head>
-<body>
+<body data-enable-hash-offset="true" data-smooth-offset="8" data-i18n-page="applications">
   <header class="nav">
     <div class="container nav-inner">
       <a class="brand" href="index.html">
@@ -271,30 +213,50 @@
         <span>QuantumBox</span>
       </a>
       <nav class="navlinks" id="navlinks">
-        <a href="index.html">Games</a>
-        <a href="applications.html" class="is-active">Applications</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="index.html#about">About</a>
+        <a href="index.html" data-i18n="nav.games">Games</a>
+        <a href="applications.html" class="is-active" data-i18n="nav.applications">Applications</a>
+        <a href="#roadmap" data-i18n="nav.roadmap">Roadmap</a>
+        <a href="index.html#about" data-i18n="nav.about">About</a>
       </nav>
-      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navlinks">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="nav-actions">
+        <div class="lang-switch">
+          <button class="lang-button" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language" data-i18n-attr="aria-label:common.select_language">
+            <span class="lang-dot" data-lang-code>EN</span>
+            <span class="lang-current" data-lang-current>English</span>
+            <span class="lang-caret" aria-hidden="true"></span>
+          </button>
+          <div class="lang-menu" role="listbox" aria-label="Language selection" data-i18n-attr="aria-label:common.language_selection">
+            <button type="button" class="lang-option" data-lang="en" role="option" aria-selected="true">English</button>
+            <button type="button" class="lang-option" data-lang="ru" role="option" aria-selected="false">Русский</button>
+            <button type="button" class="lang-option" data-lang="de" role="option" aria-selected="false">Deutsch</button>
+            <button type="button" class="lang-option" data-lang="es" role="option" aria-selected="false">Español</button>
+            <button type="button" class="lang-option" data-lang="zh" role="option" aria-selected="false">中文</button>
+            <button type="button" class="lang-option" data-lang="ja" role="option" aria-selected="false">日本語</button>
+            <button type="button" class="lang-option" data-lang="ko" role="option" aria-selected="false">한국어</button>
+            <button type="button" class="lang-option" data-lang="hi" role="option" aria-selected="false">हिन्दी</button>
+            <button type="button" class="lang-option" data-lang="tr" role="option" aria-selected="false">Türkçe</button>
+          </div>
+        </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navlinks" data-i18n-attr="aria-label:common.toggle_navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
 
   <main>
     <section class="hero">
       <div class="container">
-        <p class="eyebrow">Applications by QuantumBox</p>
-        <h1>Practical software with a cleaner, business-first approach.</h1>
-        <p class="lead">
+        <p class="eyebrow" data-i18n="apps.hero.eyebrow">Applications by QuantumBox</p>
+        <h1 data-i18n="apps.hero.title">Practical software with a cleaner, business-first approach.</h1>
+        <p class="lead" data-i18n="apps.hero.lead">
           This page is focused on utility products and business tools. The current flagship application is Pockex - a focused workspace for exchange operations and cash register control.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="mailto:info.pockex@gmail.com?subject=Pockex%20demo%20request">Request Pockex demo</a>
-          <a class="btn btn-secondary" href="index.html">Back to games page</a>
+          <a class="btn btn-primary" href="mailto:info.pockex@gmail.com?subject=Pockex%20demo%20request" data-i18n="apps.hero.cta_demo">Request Pockex demo</a>
+          <a class="btn btn-secondary" href="index.html" data-i18n="apps.hero.cta_back">Back to games page</a>
         </div>
       </div>
     </section>
@@ -305,33 +267,34 @@
           <div class="app-head">
             <img class="app-logo" src="images/pockex-logo.png" alt="Pockex logo" />
             <div>
-              <span class="badge">In active development</span>
+              <span class="badge" data-i18n="apps.pockex.badge">In active development</span>
               <h2>Pockex</h2>
-              <p class="muted">Cash register and accounting for exchange operations: rates, trades, clients, and balances in one interface.</p>
+              <p class="muted" data-i18n="apps.pockex.desc">Cash register and accounting for exchange operations: rates, trades, clients, and balances in one interface.</p>
             </div>
           </div>
 
           <div class="app-grid">
             <div>
-              <h3>Core capabilities</h3>
+              <h3 data-i18n="apps.core.title">Core capabilities</h3>
               <ul class="check-list">
-                <li>Rates and market tracking for daily exchange operations.</li>
-                <li>Buy/sell deals and cross-exchange flow in one workflow.</li>
-                <li>Cash register visibility and per-currency balance control.</li>
-                <li>Client records, notes, backups, and data transfer tools.</li>
+                <li data-i18n="apps.core.li1">Rates and market tracking for daily exchange operations.</li>
+                <li data-i18n="apps.core.li2">Buy/sell deals and cross-exchange flow in one workflow.</li>
+                <li data-i18n="apps.core.li3">Cash register visibility and per-currency balance control.</li>
+                <li data-i18n="apps.core.li4">Client records, notes, backups, and data transfer tools.</li>
               </ul>
             </div>
 
             <aside class="panel">
-              <h3>Current focus</h3>
+              <h3 data-i18n="apps.focus.title">Current focus</h3>
               <ul class="plain-list">
-                <li>Private onboarding with early users.</li>
-                <li>Flow polishing and performance improvements.</li>
-                <li>Preparing public launch assets and release channels.</li>
+                <li data-i18n="apps.focus.li1">Private onboarding with early users.</li>
+                <li data-i18n="apps.focus.li2">Flow polishing and performance improvements.</li>
+                <li data-i18n="apps.focus.li3">Preparing public launch assets and release channels.</li>
               </ul>
               <div style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
-                <a class="btn btn-primary" href="mailto:info.pockex@gmail.com?subject=Pockex%20pilot%20access">Join pilot list</a>
-                <a class="btn btn-secondary" href="mailto:info.pockex@gmail.com">Contact: info.pockex@gmail.com</a>
+                <a class="btn btn-primary" href="mailto:info.pockex@gmail.com?subject=Pockex%20pilot%20access" data-i18n="apps.focus.cta_pilot">Join pilot list</a>
+                <a class="btn btn-secondary" href="https://nikolasnovo.github.io/Pockex/" target="_blank" rel="noopener" data-i18n="apps.focus.cta_site">Official Pockex website</a>
+                <a class="btn btn-secondary" href="mailto:info.pockex@gmail.com" data-i18n="apps.focus.cta_contact">Contact: info.pockex@gmail.com</a>
               </div>
             </aside>
           </div>
@@ -341,29 +304,29 @@
 
     <section class="section" id="roadmap">
       <div class="container">
-        <h2 style="margin-bottom:8px;">Applications roadmap</h2>
-        <p class="muted" style="margin-top:0; margin-bottom:14px;">The applications line will stay focused on reliability and clear workflows first.</p>
+        <h2 style="margin-bottom:8px;" data-i18n="apps.roadmap.title">Applications roadmap</h2>
+        <p class="muted" style="margin-top:0; margin-bottom:14px;" data-i18n="apps.roadmap.lead">The applications line will stay focused on reliability and clear workflows first.</p>
         <div class="cards">
           <article class="road-card reveal">
-            <strong>Now</strong>
-            <p>Stabilize Pockex and expand pilot usage with real operator feedback.</p>
+            <strong data-i18n="apps.roadmap.now.title">Now</strong>
+            <p data-i18n="apps.roadmap.now.text">Stabilize Pockex and expand pilot usage with real operator feedback.</p>
           </article>
           <article class="road-card reveal">
-            <strong>Next</strong>
-            <p>Public release preparation: onboarding docs, support flow, and legal pages.</p>
+            <strong data-i18n="apps.roadmap.next.title">Next</strong>
+            <p data-i18n="apps.roadmap.next.text">Public release preparation: onboarding docs, support flow, and legal pages.</p>
           </article>
           <article class="road-card reveal">
-            <strong>Later</strong>
-            <p>New utility apps for small teams where speed and clarity matter most.</p>
+            <strong data-i18n="apps.roadmap.later.title">Later</strong>
+            <p data-i18n="apps.roadmap.later.text">New utility apps for small teams where speed and clarity matter most.</p>
           </article>
         </div>
 
         <div class="cta reveal">
           <div>
-            <h3 style="margin:0 0 4px;">Need a custom workflow?</h3>
-            <p>Share your use case and I will evaluate if it fits the next product cycle.</p>
+            <h3 style="margin:0 0 4px;" data-i18n="apps.cta.title">Need a custom workflow?</h3>
+            <p data-i18n="apps.cta.text">Share your use case and I will evaluate if it fits the next product cycle.</p>
           </div>
-          <a class="btn btn-primary" href="mailto:quantumboxgamesofficial@gmail.com?subject=QuantumBox%20application%20idea">Send an idea</a>
+          <a class="btn btn-primary" href="mailto:quantumboxgamesofficial@gmail.com?subject=QuantumBox%20application%20idea" data-i18n="apps.cta.button">Send an idea</a>
         </div>
       </div>
     </section>
@@ -371,51 +334,12 @@
 
   <footer>
     <div class="container footer-inner">
-      <p class="footer-note">© <span id="y"></span> QuantumBox. Games and applications by Nikolas Novo.</p>
-      <a class="btn btn-secondary" href="index.html#support">Support QuantumBox</a>
+      <p class="footer-note">© <span id="y"></span> <span data-i18n="apps.footer.note">QuantumBox. Games and applications by Nikolas Novo.</span></p>
+      <a class="btn btn-secondary" href="index.html#support" data-i18n="apps.footer.support">Support QuantumBox</a>
     </div>
   </footer>
 
-  <script>
-    (function(){
-      const body = document.body;
-      const navInner = document.querySelector('.nav-inner');
-      const navToggle = document.querySelector('.nav-toggle');
-      const navLinks = Array.from(document.querySelectorAll('.navlinks a'));
-
-      function setMenu(open){
-        body.classList.toggle('nav-open', open);
-        if(navToggle){ navToggle.setAttribute('aria-expanded', String(open)); }
-      }
-
-      if(navToggle){
-        navToggle.addEventListener('click', () => setMenu(!body.classList.contains('nav-open')));
-        document.addEventListener('click', (e) => {
-          if(!body.classList.contains('nav-open')) return;
-          if(navInner && navInner.contains(e.target)) return;
-          setMenu(false);
-        });
-        window.addEventListener('resize', () => {
-          if(window.innerWidth > 920){ setMenu(false); }
-        });
-      }
-
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => setMenu(false));
-      });
-
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach((entry)=>{
-          if(entry.isIntersecting){
-            entry.target.classList.add('visible');
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12 });
-      document.querySelectorAll('.reveal').forEach((el)=>io.observe(el));
-
-      document.getElementById('y').textContent = new Date().getFullYear();
-    })();
-  </script>
+  <script src="scripts/shared.js"></script>
+  <script src="scripts/i18n.js"></script>
 </body>
 </html>

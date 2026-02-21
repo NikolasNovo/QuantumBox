@@ -14,8 +14,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- BASIC SEO -->
-  <title>QuantumBox - Cozy Indie Games & Apps</title>
-  <meta name="description" content="QuantumBox a project by Nikolas Novo - Beginner solo indie developer crafting cozy games and apps with heart. First release: Milky Way Star. Less noise, more soul." />
+  <title data-i18n="index.meta.title">QuantumBox - Cozy Indie Games & Apps</title>
+  <meta name="description" content="QuantumBox a project by Nikolas Novo - Beginner solo indie developer crafting cozy games and apps with heart. First release: Milky Way Star. Less noise, more soul." data-i18n-attr="content:index.meta.description" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="author" content="QuantumBox" />
   <link rel="canonical" href="https://nikolasnovo.github.io/QuantumBox/" />
@@ -50,6 +50,7 @@
   <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/shared.css" />
 
   <!-- STYLES -->
   <style>
@@ -61,9 +62,25 @@
       --accent-2:#ff445e;
       --border:rgba(255,255,255,.12);
       --glow:0 10px 30px rgba(225,21,42,.35);
+      --container-max:1200px;
+      --nav-bg:rgba(10,8,24,.55);
+      --nav-bg-scrolled:rgba(10,8,24,.7);
+      --nav-border:var(--border);
+      --footer-border:var(--border);
+      --brand-color:var(--text);
+      --logo-ring-1:var(--cyan);
+      --logo-ring-2:var(--fuchsia);
+      --logo-dot:var(--amber);
+      --nav-link-color:#e9e9ee;
+      --nav-link-active:#fff;
+      --nav-link-underline:linear-gradient(90deg, var(--accent), var(--accent-2));
+      --nav-toggle-bg:rgba(255,255,255,.06);
+      --nav-toggle-border:var(--border);
+      --nav-toggle-bar:#fff;
+      --nav-mobile-bg:rgba(10,8,24,.96);
+      --nav-mobile-border:var(--border);
+      --nav-mobile-shadow:0 18px 40px rgba(0,0,0,.45);
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
     body{
       margin:0; color:var(--text);
       font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
@@ -81,61 +98,6 @@
         radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,.7) 40%, transparent 41%);
       background-size: 280px 280px, 360px 360px, 320px 320px, 420px 420px;
     }
-    .container{max-width:1200px; margin:0 auto; padding:0 20px}
-    header.nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background:rgba(10,8,24,.55);
-      border-bottom:1px solid var(--border);
-      transition:all .25s ease;
-    }
-    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
-    .brand{display:flex; gap:.6rem; align-items:center; text-decoration:none; color:var(--text); font-weight:700; letter-spacing:.02em}
-    .logo{position:relative; width:28px; height:28px}
-    .logo:before,.logo:after{content:""; position:absolute; inset:0; border-radius:50%; border:2px solid var(--cyan); transform:rotate(32deg)}
-    .logo:after{border-color:var(--fuchsia); transform:rotate(-32deg)}
-    .logo-dot{position:absolute; inset:8px; border-radius:50%; background:var(--amber)}
-    .navlinks{display:flex; gap:18px; align-items:center}
-    .nav-toggle{
-      display:none;
-      width:42px;
-      height:42px;
-      padding:0;
-      border:1px solid var(--border);
-      border-radius:10px;
-      background:rgba(255,255,255,.06);
-      cursor:pointer;
-      align-items:center;
-      justify-content:center;
-      flex-direction:column;
-      gap:4px;
-    }
-    .nav-toggle span{
-      width:18px;
-      height:2px;
-      border-radius:2px;
-      background:#fff;
-      transition:transform .22s ease, opacity .22s ease;
-    }
-    .nav-open .nav-toggle span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-    .nav-open .nav-toggle span:nth-child(2){opacity:0}
-    .nav-open .nav-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-    .navlinks a{position:relative; color:#e9e9ee; text-decoration:none; font-weight:600; font-size:.95rem; padding:6px 2px}
-    .navlinks a:after{
-      content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; border-radius:2px;
-      background:linear-gradient(90deg, var(--accent), var(--accent-2));
-      transform:scaleX(0); transform-origin:left; transition:transform .2s ease;
-    }
-    .navlinks a:hover:after, .navlinks a.is-active:after{transform:scaleX(1)}
-    .nav-cta{
-      margin-left:6px;
-      display:inline-flex; align-items:center; gap:.55rem;
-      text-decoration:none; font-weight:800;
-      color:#0b0614; background:linear-gradient(90deg,var(--accent),var(--accent-2));
-      padding:10px 14px; border-radius:12px; box-shadow:var(--glow); border:1px solid rgba(255,255,255,.08);
-      transition:transform .12s ease, box-shadow .2s ease, filter .2s ease;
-    }
-    .nav-cta:hover{transform:translateY(-1px); filter:saturate(1.1)}
     main section{padding:86px 0}
     .grid{display:grid; gap:28px}
     @media (min-width: 980px){.grid-hero{grid-template-columns:1.2fr 1fr}}
@@ -165,17 +127,10 @@
       transform:skewY(-2.2deg); transform-origin:left;
       filter:blur(6px); opacity:.7;
     }
-    footer{border-top:1px solid var(--border)}
-    /* Reveal-on-scroll */
-    .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
-    .reveal.visible{opacity:1; transform:none}
     /* Back to top */
     .to-top{position:fixed; right:18px; bottom:18px; z-index:40; opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease}
     .to-top.show{opacity:1; pointer-events:auto}
     .to-top .btn{padding:12px 14px}
-    /* Shrink on scroll */
-    .shrink header.nav{background:rgba(10,8,24,.7)}
-    .shrink .nav-inner{padding:10px 0}
 
     /* Сетка для блока About */
     .about-grid {
@@ -269,43 +224,6 @@
         grid-template-columns: 1fr !important;
       }
 
-      .nav-inner {
-        position: relative;
-      }
-
-      .nav-toggle {
-        display: inline-flex;
-      }
-
-      .navlinks {
-        position: absolute;
-        top: calc(100% + 10px);
-        left: 0;
-        right: 0;
-        gap: 8px;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 14px;
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        background: rgba(10,8,24,.96);
-        box-shadow: 0 18px 40px rgba(0,0,0,.45);
-        opacity: 0;
-        transform: translateY(-10px);
-        pointer-events: none;
-        transition: opacity .2s ease, transform .2s ease;
-      }
-
-      .navlinks a {
-        padding: 8px 2px;
-      }
-
-      .nav-open .navlinks {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-
       .btn {
         width: 100%;
         justify-content: center;
@@ -369,7 +287,7 @@
   }
   </script>
 </head>
-<body>
+<body data-spy-sections="#home,#game,#support,#about" data-enable-hash-offset="true" data-smooth-offset="8" data-shrink-threshold="30" data-top-threshold="500" data-i18n-page="index">
   <div class="stars" aria-hidden="true"></div>
 
   <!-- NAV -->
@@ -380,17 +298,37 @@
         <span>QuantumBox</span>
       </a>
       <nav class="navlinks" id="navlinks">
-        <a href="#home" class="is-active">Home</a>
-        <a href="#game">Games</a>
-        <a href="applications.html">Applications</a>
-        <a href="#support">Support</a>
-        <a href="#about">About</a>
+        <a href="#home" class="is-active" data-i18n="nav.home">Home</a>
+        <a href="#game" data-i18n="nav.games">Games</a>
+        <a href="applications.html" data-i18n="nav.applications">Applications</a>
+        <a href="#support" data-i18n="nav.support">Support</a>
+        <a href="#about" data-i18n="nav.about">About</a>
       </nav>
-      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navlinks">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="nav-actions">
+        <div class="lang-switch">
+          <button class="lang-button" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language" data-i18n-attr="aria-label:common.select_language">
+            <span class="lang-dot" data-lang-code>EN</span>
+            <span class="lang-current" data-lang-current>English</span>
+            <span class="lang-caret" aria-hidden="true"></span>
+          </button>
+          <div class="lang-menu" role="listbox" aria-label="Language selection" data-i18n-attr="aria-label:common.language_selection">
+            <button type="button" class="lang-option" data-lang="en" role="option" aria-selected="true">English</button>
+            <button type="button" class="lang-option" data-lang="ru" role="option" aria-selected="false">Русский</button>
+            <button type="button" class="lang-option" data-lang="de" role="option" aria-selected="false">Deutsch</button>
+            <button type="button" class="lang-option" data-lang="es" role="option" aria-selected="false">Español</button>
+            <button type="button" class="lang-option" data-lang="zh" role="option" aria-selected="false">中文</button>
+            <button type="button" class="lang-option" data-lang="ja" role="option" aria-selected="false">日本語</button>
+            <button type="button" class="lang-option" data-lang="ko" role="option" aria-selected="false">한국어</button>
+            <button type="button" class="lang-option" data-lang="hi" role="option" aria-selected="false">हिन्दी</button>
+            <button type="button" class="lang-option" data-lang="tr" role="option" aria-selected="false">Türkçe</button>
+          </div>
+        </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navlinks" data-i18n-attr="aria-label:common.toggle_navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -400,25 +338,25 @@
       <div class="container grid grid-hero">
         <div class="reveal">
           <h1>
-            Welcome to <span class="gradient-text">QuantumBox</span>
+            <span data-i18n="index.hero.welcome">Welcome to</span> <span class="gradient-text">QuantumBox</span>
           </h1>
-          <p class="lead">
+          <p class="lead" data-i18n="index.hero.lead">
             Beginner indie dev turning ideas into cozy apps &amp; games! Less noise more heart, made for real people.
           </p>
           <div style="margin-top:1.1rem; display:flex; gap:.6rem; flex-wrap:wrap">
             <a class="btn btn-primary" href="#game">
               <svg viewBox="0 0 24 24" fill="none"><path d="M8 5l10 7-10 7V5z" stroke="#0b0614" stroke-width="2"/></svg>
-              See the first game
+              <span data-i18n="index.hero.cta_game">See the first game</span>
             </a>
             <a class="btn btn-ghost" href="applications.html">
               <svg viewBox="0 0 24 24" fill="none"><path d="M12 12v6M12 6h.01" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-              Explore applications
+              <span data-i18n="index.hero.cta_apps">Explore applications</span>
             </a>
           </div>
           <ul style="margin-top:1rem; padding-left:0; list-style:none; color:var(--muted)">
-            <li>• Cozy vibes, small scope</li>
-            <li>• Built with curiosity patience and love for players</li>
-            <li>• Neon-cosmic palette with warm gold accents</li>
+            <li data-i18n="index.hero.b1">• Cozy vibes, small scope</li>
+            <li data-i18n="index.hero.b2">• Built with curiosity patience and love for players</li>
+            <li data-i18n="index.hero.b3">• Neon-cosmic palette with warm gold accents</li>
           </ul>
         </div>
         <div class="reveal">
@@ -433,9 +371,9 @@
     <section id="game">
       <div class="container grid" style="grid-template-columns:1.1fr 1fr">
         <div class="reveal">
-          <div class="badge"><span class="dot"></span>New Release</div>
+          <div class="badge"><span class="dot"></span><span data-i18n="index.game.badge">New Release</span></div>
           <h2>Milky Way Star</h2>
-          <p class="lead">A bite-size, starry arcade where simple taps guide a little star through the Milky Way. Easy to learn, soothing to play.</p>
+          <p class="lead" data-i18n="index.game.lead">A bite-size, starry arcade where simple taps guide a little star through the Milky Way. Easy to learn, soothing to play.</p>
           <ul style="margin:.8rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
             <li>• One-thumb controls - perfect for quick sessions</li>
             <li>• Cozy pixel art &amp; gentle space ambience</li>
@@ -444,7 +382,7 @@
           <div style="margin-top:1.1rem; display:flex; gap:.6rem; flex-wrap:wrap">
             <button class="btn btn-primary" type="button" disabled aria-disabled="true" style="opacity:.75; cursor:not-allowed;">
               <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M12 4v16" stroke="#0b0614" stroke-width="2" stroke-linecap="round"/></svg>
-              Coming soon on Google Play
+              <span data-i18n="index.game.cta_soon">Coming soon on Google Play</span>
             </button>
             <!--
             <a class="btn btn-ghost" href="#">
@@ -457,7 +395,7 @@
         <div class="reveal">
           <figure class="frame">
             <img src="images/milkywaystar.jpg" alt="Milky Way Star cozy mobile arcade game screenshot" style="width:100%; display:block">
-            <figcaption>Milky Way Star - ingame screenshot</figcaption>
+            <figcaption data-i18n="index.game.caption">Milky Way Star - ingame screenshot</figcaption>
           </figure>
         </div>
       </div>
@@ -467,9 +405,9 @@
     <section id="hero-adventure" class="section-edge">
       <div class="container grid" style="grid-template-columns:1.1fr 1fr">
         <div class="reveal">
-          <div class="badge"><span class="dot"></span>In Development</div>
+          <div class="badge"><span class="dot"></span><span data-i18n="index.upcoming.badge">In Development</span></div>
           <h2>Hero's Adventure</h2>
-          <p class="lead">
+          <p class="lead" data-i18n="index.upcoming.lead">
             A cozy pixel-art action RPG set in a rainy medieval world. Wander forests, rivers and villages, meet gentle souls and hidden dangers, and slowly grow from a nameless wanderer into a true hero.
           </p>
           <ul style="margin:.8rem 0 0 0; padding-left:0; list-style:none; color:var(--muted)">
@@ -477,7 +415,7 @@
             <li>• A warm, fascinating world, small kingdom, dynamic weather, forests, rivers and winding roads</li>
             <li>• Simple touch controls for moving, exploring and fighting</li>
           </ul>
-          <p style="margin-top:1rem; color:var(--muted); font-size:.95rem">
+          <p style="margin-top:1rem; color:var(--muted); font-size:.95rem" data-i18n="index.upcoming.note">
             Working title - <strong>Hero's Adventure</strong>. More information will appear as development goes on.
           </p>
         </div>
@@ -508,8 +446,8 @@
     <section id="support" class="section-edge">
       <div class="container">
         <div class="reveal">
-          <h2>Support The Developer</h2>
-          <p class="lead">
+          <h2 data-i18n="index.support.title">Support The Developer</h2>
+          <p class="lead" data-i18n="index.support.lead">
             If you’d like to help me keep building useful apps, cozy worlds and tiny games, you can support QuantumBox with a small tip or crypto donation.
             Every bit of support goes into time, tools and coffee for future projects.
           </p>
@@ -561,13 +499,13 @@
     <section id="about" class="section-edge">
       <div class="container">
         <div class="reveal">
-          <h2>About Me</h2>
-          <p class="lead">
+          <h2 data-i18n="index.about.title">About Me</h2>
+          <p class="lead" data-i18n="index.about.p1">
             Hi! I’m Nikolas Novo - the solo developer behind <strong>QuantumBox</strong>. 
             I’m just starting my indie journey, learning in public, keeping scope small 
             and focusing on warm feel-good experiences.
           </p>
-          <p class="lead">
+          <p class="lead" data-i18n="index.about.p2">
             I believe in cozy vibes, respectful design and games that brighten a day. 
             If you’d like to follow along or collaborate drop me a line below.
           </p>
@@ -631,96 +569,21 @@
         <span class="logo"><span class="logo-dot"></span></span>
         <span>© <span id="y"></span> QuantumBox</span>
       </div>
-      <p style="margin:0; opacity:.85">Indie spirit, cozy experiences built with heart curiosity and creativity.</p>
+      <p style="margin:0; opacity:.85" data-i18n="index.footer.tagline">Indie spirit, cozy experiences built with heart curiosity and creativity.</p>
     </div>
   </footer>
 
   <!-- Back to top -->
   <div class="to-top" id="toTop">
-    <a class="btn btn-ghost" href="#home" aria-label="Back to top">
+    <a class="btn btn-ghost" href="#home" aria-label="Back to top" data-i18n-attr="aria-label:index.back_to_top">
       <svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5M6 11l6-6 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
     </a>
   </div>
 
+  <script src="scripts/shared.js"></script>
+  <script src="scripts/i18n.js"></script>
+
   <script>
-    // Smooth scroll, mobile menu, and active link highlight
-    (function(){
-      const body = document.body;
-      const header = document.querySelector('header.nav');
-      const navInner = document.querySelector('.nav-inner');
-      const navToggle = document.querySelector('.nav-toggle');
-      const links = Array.from(document.querySelectorAll('.navlinks a'));
-      const inPageLinks = links.filter(a => {
-        const href = a.getAttribute('href') || '';
-        return href.startsWith('#') && href.length > 1;
-      });
-      const toTop = document.getElementById('toTop');
-
-      function setMenu(open){
-        body.classList.toggle('nav-open', open);
-        if(navToggle){ navToggle.setAttribute('aria-expanded', String(open)); }
-      }
-
-      function goTo(hash){
-        const el = document.querySelector(hash);
-        if(!el) return;
-        const rect = el.getBoundingClientRect();
-        const top = window.scrollY + rect.top - (header.offsetHeight + 8);
-        window.scrollTo({ top, behavior:'smooth' });
-      }
-
-      if(navToggle){
-        navToggle.addEventListener('click', ()=>setMenu(!body.classList.contains('nav-open')));
-        document.addEventListener('click', (e)=>{
-          if(!body.classList.contains('nav-open')) return;
-          if(navInner && navInner.contains(e.target)) return;
-          setMenu(false);
-        });
-      }
-
-      links.forEach(a=>{
-        a.addEventListener('click', (e)=>{
-          const href = a.getAttribute('href') || '';
-          if(href.startsWith('#') && href.length > 1){
-            e.preventDefault();
-            goTo(href);
-          }
-          setMenu(false);
-        });
-      });
-
-      // Intersection Observer for reveal animations
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-        });
-      },{threshold:.14});
-      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-      // Active nav item on scroll
-      const sections = ['#home','#game','#support','#about'].map(id=>document.querySelector(id)).filter(Boolean);
-      const spy = ()=>{
-        const y = window.scrollY + header.offsetHeight + 20;
-        let current = '#home';
-        for(const s of sections){
-          if(y >= s.offsetTop) current = '#'+s.id;
-        }
-        inPageLinks.forEach(a=>a.classList.toggle('is-active', a.getAttribute('href')===current));
-      };
-      window.addEventListener('scroll', spy, {passive:true}); spy();
-
-      // Header shrink + to-top button
-      const onScroll = ()=>{
-        body.classList.toggle('shrink', window.scrollY > 30);
-        if(window.scrollY > 500){ toTop.classList.add('show'); } else { toTop.classList.remove('show'); }
-      };
-      window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
-      window.addEventListener('resize', ()=>{ if(window.innerWidth > 900){ setMenu(false); } });
-
-      // If page opened with hash, offset it
-      if(location.hash && location.hash.length > 1){ setTimeout(()=>goTo(location.hash), 50); }
-    })();
-
     // Simple carousel for Hero's Adventure screenshots
     (function(){
       const carousel = document.querySelector('[data-carousel="hero-adventure"]');
@@ -750,9 +613,6 @@
         });
       });
     })();
-
-    // Set year
-    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
